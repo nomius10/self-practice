@@ -1,0 +1,2821 @@
+
+main:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000003000 <_init>:
+    3000:	f3 0f 1e fa          	endbr64 
+    3004:	48 83 ec 08          	sub    rsp,0x8
+    3008:	48 8b 05 11 5f 00 00 	mov    rax,QWORD PTR [rip+0x5f11]        # 8f20 <__gmon_start__>
+    300f:	48 85 c0             	test   rax,rax
+    3012:	74 02                	je     3016 <_init+0x16>
+    3014:	ff d0                	call   rax
+    3016:	48 83 c4 08          	add    rsp,0x8
+    301a:	c3                   	ret    
+
+Disassembly of section .plt:
+
+0000000000003020 <.plt>:
+    3020:	ff 35 5a 5e 00 00    	push   QWORD PTR [rip+0x5e5a]        # 8e80 <_GLOBAL_OFFSET_TABLE_+0x8>
+    3026:	ff 25 5c 5e 00 00    	jmp    QWORD PTR [rip+0x5e5c]        # 8e88 <_GLOBAL_OFFSET_TABLE_+0x10>
+    302c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000003030 <_Unwind_Resume@plt>:
+    3030:	ff 25 5a 5e 00 00    	jmp    QWORD PTR [rip+0x5e5a]        # 8e90 <_Unwind_Resume@GCC_3.0>
+    3036:	68 00 00 00 00       	push   0x0
+    303b:	e9 e0 ff ff ff       	jmp    3020 <.plt>
+
+Disassembly of section .plt.got:
+
+0000000000003040 <__cxa_finalize@plt>:
+    3040:	ff 25 b2 5f 00 00    	jmp    QWORD PTR [rip+0x5fb2]        # 8ff8 <__cxa_finalize@GLIBC_2.2.5>
+    3046:	66 90                	xchg   ax,ax
+
+Disassembly of section .text:
+
+0000000000003050 <_start>:
+    3050:	f3 0f 1e fa          	endbr64 
+    3054:	31 ed                	xor    ebp,ebp
+    3056:	49 89 d1             	mov    r9,rdx
+    3059:	5e                   	pop    rsi
+    305a:	48 89 e2             	mov    rdx,rsp
+    305d:	48 83 e4 f0          	and    rsp,0xfffffffffffffff0
+    3061:	50                   	push   rax
+    3062:	54                   	push   rsp
+    3063:	4c 8d 05 b6 20 00 00 	lea    r8,[rip+0x20b6]        # 5120 <__libc_csu_fini>
+    306a:	48 8d 0d 3f 20 00 00 	lea    rcx,[rip+0x203f]        # 50b0 <__libc_csu_init>
+    3071:	48 8d 3d 7f 14 00 00 	lea    rdi,[rip+0x147f]        # 44f7 <main>
+    3078:	ff 15 9a 5e 00 00    	call   QWORD PTR [rip+0x5e9a]        # 8f18 <__libc_start_main@GLIBC_2.2.5>
+    307e:	f4                   	hlt    
+    307f:	90                   	nop
+
+0000000000003080 <deregister_tm_clones>:
+    3080:	48 8d 3d 89 5f 00 00 	lea    rdi,[rip+0x5f89]        # 9010 <__TMC_END__>
+    3087:	48 8d 05 82 5f 00 00 	lea    rax,[rip+0x5f82]        # 9010 <__TMC_END__>
+    308e:	48 39 f8             	cmp    rax,rdi
+    3091:	74 15                	je     30a8 <deregister_tm_clones+0x28>
+    3093:	48 8b 05 0e 5e 00 00 	mov    rax,QWORD PTR [rip+0x5e0e]        # 8ea8 <_ITM_deregisterTMCloneTable>
+    309a:	48 85 c0             	test   rax,rax
+    309d:	74 09                	je     30a8 <deregister_tm_clones+0x28>
+    309f:	ff e0                	jmp    rax
+    30a1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+    30a8:	c3                   	ret    
+    30a9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+
+00000000000030b0 <register_tm_clones>:
+    30b0:	48 8d 3d 59 5f 00 00 	lea    rdi,[rip+0x5f59]        # 9010 <__TMC_END__>
+    30b7:	48 8d 35 52 5f 00 00 	lea    rsi,[rip+0x5f52]        # 9010 <__TMC_END__>
+    30be:	48 29 fe             	sub    rsi,rdi
+    30c1:	48 89 f0             	mov    rax,rsi
+    30c4:	48 c1 ee 3f          	shr    rsi,0x3f
+    30c8:	48 c1 f8 03          	sar    rax,0x3
+    30cc:	48 01 c6             	add    rsi,rax
+    30cf:	48 d1 fe             	sar    rsi,1
+    30d2:	74 14                	je     30e8 <register_tm_clones+0x38>
+    30d4:	48 8b 05 d5 5e 00 00 	mov    rax,QWORD PTR [rip+0x5ed5]        # 8fb0 <_ITM_registerTMCloneTable>
+    30db:	48 85 c0             	test   rax,rax
+    30de:	74 08                	je     30e8 <register_tm_clones+0x38>
+    30e0:	ff e0                	jmp    rax
+    30e2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+    30e8:	c3                   	ret    
+    30e9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+
+00000000000030f0 <__do_global_dtors_aux>:
+    30f0:	f3 0f 1e fa          	endbr64 
+    30f4:	80 3d 15 5f 00 00 00 	cmp    BYTE PTR [rip+0x5f15],0x0        # 9010 <__TMC_END__>
+    30fb:	75 2b                	jne    3128 <__do_global_dtors_aux+0x38>
+    30fd:	55                   	push   rbp
+    30fe:	48 83 3d f2 5e 00 00 	cmp    QWORD PTR [rip+0x5ef2],0x0        # 8ff8 <__cxa_finalize@GLIBC_2.2.5>
+    3105:	00 
+    3106:	48 89 e5             	mov    rbp,rsp
+    3109:	74 0c                	je     3117 <__do_global_dtors_aux+0x27>
+    310b:	48 8b 3d ee 5e 00 00 	mov    rdi,QWORD PTR [rip+0x5eee]        # 9000 <__dso_handle>
+    3112:	e8 29 ff ff ff       	call   3040 <__cxa_finalize@plt>
+    3117:	e8 64 ff ff ff       	call   3080 <deregister_tm_clones>
+    311c:	c6 05 ed 5e 00 00 01 	mov    BYTE PTR [rip+0x5eed],0x1        # 9010 <__TMC_END__>
+    3123:	5d                   	pop    rbp
+    3124:	c3                   	ret    
+    3125:	0f 1f 00             	nop    DWORD PTR [rax]
+    3128:	c3                   	ret    
+    3129:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+
+0000000000003130 <frame_dummy>:
+    3130:	f3 0f 1e fa          	endbr64 
+    3134:	e9 77 ff ff ff       	jmp    30b0 <register_tm_clones>
+
+0000000000003139 <core::ptr::drop_in_place>:
+    3139:	c3                   	ret    
+
+000000000000313a <_ZN4core5alloc6layout6Layout12pad_to_align17h26f3c45852202faaE.llvm.8423637217147767627>:
+    313a:	50                   	push   rax
+    313b:	48 8b 57 08          	mov    rdx,QWORD PTR [rdi+0x8]
+    313f:	48 8d 42 ff          	lea    rax,[rdx-0x1]
+    3143:	48 85 c2             	test   rdx,rax
+    3146:	0f 94 c0             	sete   al
+    3149:	48 85 d2             	test   rdx,rdx
+    314c:	0f 95 c1             	setne  cl
+    314f:	84 c1                	test   cl,al
+    3151:	74 15                	je     3168 <_ZN4core5alloc6layout6Layout12pad_to_align17h26f3c45852202faaE.llvm.8423637217147767627+0x2e>
+    3153:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3156:	48 8d 0c 02          	lea    rcx,[rdx+rax*1]
+    315a:	48 ff c9             	dec    rcx
+    315d:	48 89 d0             	mov    rax,rdx
+    3160:	48 f7 d8             	neg    rax
+    3163:	48 21 c8             	and    rax,rcx
+    3166:	59                   	pop    rcx
+    3167:	c3                   	ret    
+    3168:	48 8d 3d dc 2e 00 00 	lea    rdi,[rip+0x2edc]        # 604b <anon.4edb19371b067e507ce45a8c53a011f9.2.llvm.8423637217147767627>
+    316f:	48 8d 0d e2 57 00 00 	lea    rcx,[rip+0x57e2]        # 8958 <anon.4edb19371b067e507ce45a8c53a011f9.3.llvm.8423637217147767627>
+    3176:	4c 8d 05 c3 57 00 00 	lea    r8,[rip+0x57c3]        # 8940 <anon.4edb19371b067e507ce45a8c53a011f9.1.llvm.8423637217147767627>
+    317d:	6a 2b                	push   0x2b
+    317f:	5e                   	pop    rsi
+    3180:	48 89 e2             	mov    rdx,rsp
+    3183:	ff 15 77 5d 00 00    	call   QWORD PTR [rip+0x5d77]        # 8f00 <core::result::unwrap_failed>
+    3189:	0f 0b                	ud2    
+
+000000000000318b <_ZN4core5alloc6layout6Layout5array17h1ef5c251a0443c85E.llvm.8423637217147767627>:
+    318b:	48 83 ec 18          	sub    rsp,0x18
+    318f:	48 89 f8             	mov    rax,rdi
+    3192:	6a 08                	push   0x8
+    3194:	59                   	pop    rcx
+    3195:	48 f7 e1             	mul    rcx
+    3198:	71 04                	jno    319e <_ZN4core5alloc6layout6Layout5array17h1ef5c251a0443c85E.llvm.8423637217147767627+0x13>
+    319a:	31 d2                	xor    edx,edx
+    319c:	eb 11                	jmp    31af <_ZN4core5alloc6layout6Layout5array17h1ef5c251a0443c85E.llvm.8423637217147767627+0x24>
+    319e:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    31a3:	48 89 07             	mov    QWORD PTR [rdi],rax
+    31a6:	48 89 4f 08          	mov    QWORD PTR [rdi+0x8],rcx
+    31aa:	e8 8b ff ff ff       	call   313a <_ZN4core5alloc6layout6Layout12pad_to_align17h26f3c45852202faaE.llvm.8423637217147767627>
+    31af:	48 83 c4 18          	add    rsp,0x18
+    31b3:	c3                   	ret    
+
+00000000000031b4 <_ZN4core5alloc6layout6Layout5array17h441828b63149341bE.llvm.8423637217147767627>:
+    31b4:	48 83 ec 18          	sub    rsp,0x18
+    31b8:	48 8d 44 24 08       	lea    rax,[rsp+0x8]
+    31bd:	48 89 38             	mov    QWORD PTR [rax],rdi
+    31c0:	48 c7 40 08 01 00 00 	mov    QWORD PTR [rax+0x8],0x1
+    31c7:	00 
+    31c8:	48 89 c7             	mov    rdi,rax
+    31cb:	e8 6a ff ff ff       	call   313a <_ZN4core5alloc6layout6Layout12pad_to_align17h26f3c45852202faaE.llvm.8423637217147767627>
+    31d0:	48 83 c4 18          	add    rsp,0x18
+    31d4:	c3                   	ret    
+
+00000000000031d5 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627>:
+    31d5:	41 57                	push   r15
+    31d7:	41 56                	push   r14
+    31d9:	41 54                	push   r12
+    31db:	53                   	push   rbx
+    31dc:	50                   	push   rax
+    31dd:	49 89 f6             	mov    r14,rsi
+    31e0:	48 89 fb             	mov    rbx,rdi
+    31e3:	6a 01                	push   0x1
+    31e5:	41 5c                	pop    r12
+    31e7:	48 85 d2             	test   rdx,rdx
+    31ea:	74 31                	je     321d <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x48>
+    31ec:	49 89 d7             	mov    r15,rdx
+    31ef:	48 8b 01             	mov    rax,QWORD PTR [rcx]
+    31f2:	48 85 c0             	test   rax,rax
+    31f5:	74 2b                	je     3222 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x4d>
+    31f7:	48 8b 71 08          	mov    rsi,QWORD PTR [rcx+0x8]
+    31fb:	4c 89 f2             	mov    rdx,r14
+    31fe:	4c 39 f6             	cmp    rsi,r14
+    3201:	74 34                	je     3237 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x62>
+    3203:	48 8b 51 10          	mov    rdx,QWORD PTR [rcx+0x10]
+    3207:	48 85 f6             	test   rsi,rsi
+    320a:	74 1e                	je     322a <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x55>
+    320c:	48 89 c7             	mov    rdi,rax
+    320f:	4c 89 f1             	mov    rcx,r14
+    3212:	ff 15 c0 5d 00 00    	call   QWORD PTR [rip+0x5dc0]        # 8fd8 <__rust_realloc>
+    3218:	4c 89 f2             	mov    rdx,r14
+    321b:	eb 1a                	jmp    3237 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x62>
+    321d:	45 31 ff             	xor    r15d,r15d
+    3220:	eb 23                	jmp    3245 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x70>
+    3222:	4c 89 f7             	mov    rdi,r14
+    3225:	4c 89 fe             	mov    rsi,r15
+    3228:	eb 06                	jmp    3230 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x5b>
+    322a:	4c 89 f7             	mov    rdi,r14
+    322d:	48 89 d6             	mov    rsi,rdx
+    3230:	31 d2                	xor    edx,edx
+    3232:	e8 93 03 00 00       	call   35ca <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627>
+    3237:	48 85 c0             	test   rax,rax
+    323a:	74 09                	je     3245 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627+0x70>
+    323c:	45 31 e4             	xor    r12d,r12d
+    323f:	49 89 c6             	mov    r14,rax
+    3242:	49 89 d7             	mov    r15,rdx
+    3245:	4c 89 73 08          	mov    QWORD PTR [rbx+0x8],r14
+    3249:	4c 89 7b 10          	mov    QWORD PTR [rbx+0x10],r15
+    324d:	4c 89 23             	mov    QWORD PTR [rbx],r12
+    3250:	48 89 d8             	mov    rax,rbx
+    3253:	48 83 c4 08          	add    rsp,0x8
+    3257:	5b                   	pop    rbx
+    3258:	41 5c                	pop    r12
+    325a:	41 5e                	pop    r14
+    325c:	41 5f                	pop    r15
+    325e:	c3                   	ret    
+
+000000000000325f <alloc::raw_vec::RawVec<T,A>::allocate_in>:
+    325f:	53                   	push   rbx
+    3260:	48 83 ec 10          	sub    rsp,0x10
+    3264:	89 f3                	mov    ebx,esi
+    3266:	e8 20 ff ff ff       	call   318b <_ZN4core5alloc6layout6Layout5array17h1ef5c251a0443c85E.llvm.8423637217147767627>
+    326b:	48 85 d2             	test   rdx,rdx
+    326e:	74 28                	je     3298 <alloc::raw_vec::RawVec<T,A>::allocate_in+0x39>
+    3270:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+    3274:	48 89 54 24 08       	mov    QWORD PTR [rsp+0x8],rdx
+    3279:	0f b6 cb             	movzx  ecx,bl
+    327c:	48 89 c7             	mov    rdi,rax
+    327f:	48 89 d6             	mov    rsi,rdx
+    3282:	89 ca                	mov    edx,ecx
+    3284:	e8 41 03 00 00       	call   35ca <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627>
+    3289:	48 85 c0             	test   rax,rax
+    328c:	74 11                	je     329f <alloc::raw_vec::RawVec<T,A>::allocate_in+0x40>
+    328e:	48 c1 ea 03          	shr    rdx,0x3
+    3292:	48 83 c4 10          	add    rsp,0x10
+    3296:	5b                   	pop    rbx
+    3297:	c3                   	ret    
+    3298:	e8 52 00 00 00       	call   32ef <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h49bcfb333b3663a0E.llvm.8423637217147767627>
+    329d:	0f 0b                	ud2    
+    329f:	48 89 e7             	mov    rdi,rsp
+    32a2:	e8 6d 00 00 00       	call   3314 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17hb1b3db9b517c9202E.llvm.8423637217147767627>
+    32a7:	0f 0b                	ud2    
+
+00000000000032a9 <alloc::raw_vec::RawVec<T,A>::allocate_in>:
+    32a9:	53                   	push   rbx
+    32aa:	48 83 ec 10          	sub    rsp,0x10
+    32ae:	89 f3                	mov    ebx,esi
+    32b0:	e8 ff fe ff ff       	call   31b4 <_ZN4core5alloc6layout6Layout5array17h441828b63149341bE.llvm.8423637217147767627>
+    32b5:	48 85 d2             	test   rdx,rdx
+    32b8:	74 24                	je     32de <alloc::raw_vec::RawVec<T,A>::allocate_in+0x35>
+    32ba:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+    32be:	48 89 54 24 08       	mov    QWORD PTR [rsp+0x8],rdx
+    32c3:	0f b6 cb             	movzx  ecx,bl
+    32c6:	48 89 c7             	mov    rdi,rax
+    32c9:	48 89 d6             	mov    rsi,rdx
+    32cc:	89 ca                	mov    edx,ecx
+    32ce:	e8 f7 02 00 00       	call   35ca <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627>
+    32d3:	48 85 c0             	test   rax,rax
+    32d6:	74 0d                	je     32e5 <alloc::raw_vec::RawVec<T,A>::allocate_in+0x3c>
+    32d8:	48 83 c4 10          	add    rsp,0x10
+    32dc:	5b                   	pop    rbx
+    32dd:	c3                   	ret    
+    32de:	e8 15 00 00 00       	call   32f8 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h6092ec7b951d73b9E.llvm.8423637217147767627>
+    32e3:	0f 0b                	ud2    
+    32e5:	48 89 e7             	mov    rdi,rsp
+    32e8:	e8 14 00 00 00       	call   3301 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h9ca4b324aa47a4ccE.llvm.8423637217147767627>
+    32ed:	0f 0b                	ud2    
+
+00000000000032ef <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h49bcfb333b3663a0E.llvm.8423637217147767627>:
+    32ef:	50                   	push   rax
+    32f0:	ff 15 ca 5b 00 00    	call   QWORD PTR [rip+0x5bca]        # 8ec0 <alloc::raw_vec::capacity_overflow>
+    32f6:	0f 0b                	ud2    
+
+00000000000032f8 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h6092ec7b951d73b9E.llvm.8423637217147767627>:
+    32f8:	50                   	push   rax
+    32f9:	ff 15 c1 5b 00 00    	call   QWORD PTR [rip+0x5bc1]        # 8ec0 <alloc::raw_vec::capacity_overflow>
+    32ff:	0f 0b                	ud2    
+
+0000000000003301 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17h9ca4b324aa47a4ccE.llvm.8423637217147767627>:
+    3301:	50                   	push   rax
+    3302:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3305:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3309:	48 89 c7             	mov    rdi,rax
+    330c:	ff 15 8e 5b 00 00    	call   QWORD PTR [rip+0x5b8e]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    3312:	0f 0b                	ud2    
+
+0000000000003314 <_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$11allocate_in28_$u7b$$u7b$closure$u7d$$u7d$17hb1b3db9b517c9202E.llvm.8423637217147767627>:
+    3314:	50                   	push   rax
+    3315:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3318:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    331c:	48 89 c7             	mov    rdi,rax
+    331f:	ff 15 7b 5b 00 00    	call   QWORD PTR [rip+0x5b7b]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    3325:	0f 0b                	ud2    
+
+0000000000003327 <alloc::raw_vec::RawVec<T,A>::shrink_to_fit>:
+    3327:	41 57                	push   r15
+    3329:	41 56                	push   r14
+    332b:	53                   	push   rbx
+    332c:	49 89 f6             	mov    r14,rsi
+    332f:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3333:	4c 39 f6             	cmp    rsi,r14
+    3336:	72 53                	jb     338b <alloc::raw_vec::RawVec<T,A>::shrink_to_fit+0x64>
+    3338:	48 85 f6             	test   rsi,rsi
+    333b:	74 48                	je     3385 <alloc::raw_vec::RawVec<T,A>::shrink_to_fit+0x5e>
+    333d:	48 89 fb             	mov    rbx,rdi
+    3340:	48 8b 3f             	mov    rdi,QWORD PTR [rdi]
+    3343:	4c 39 f6             	cmp    rsi,r14
+    3346:	74 36                	je     337e <alloc::raw_vec::RawVec<T,A>::shrink_to_fit+0x57>
+    3348:	4d 85 f6             	test   r14,r14
+    334b:	74 22                	je     336f <alloc::raw_vec::RawVec<T,A>::shrink_to_fit+0x48>
+    334d:	6a 01                	push   0x1
+    334f:	5a                   	pop    rdx
+    3350:	4c 89 f1             	mov    rcx,r14
+    3353:	ff 15 7f 5c 00 00    	call   QWORD PTR [rip+0x5c7f]        # 8fd8 <__rust_realloc>
+    3359:	48 89 c7             	mov    rdi,rax
+    335c:	48 85 c0             	test   rax,rax
+    335f:	75 1d                	jne    337e <alloc::raw_vec::RawVec<T,A>::shrink_to_fit+0x57>
+    3361:	6a 01                	push   0x1
+    3363:	5e                   	pop    rsi
+    3364:	4c 89 f7             	mov    rdi,r14
+    3367:	ff 15 33 5b 00 00    	call   QWORD PTR [rip+0x5b33]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    336d:	0f 0b                	ud2    
+    336f:	6a 01                	push   0x1
+    3371:	41 5f                	pop    r15
+    3373:	4c 89 fa             	mov    rdx,r15
+    3376:	e8 78 02 00 00       	call   35f3 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627>
+    337b:	4c 89 ff             	mov    rdi,r15
+    337e:	48 89 3b             	mov    QWORD PTR [rbx],rdi
+    3381:	4c 89 73 08          	mov    QWORD PTR [rbx+0x8],r14
+    3385:	5b                   	pop    rbx
+    3386:	41 5e                	pop    r14
+    3388:	41 5f                	pop    r15
+    338a:	c3                   	ret    
+    338b:	48 8d 3d e4 2c 00 00 	lea    rdi,[rip+0x2ce4]        # 6076 <anon.4edb19371b067e507ce45a8c53a011f9.4.llvm.8423637217147767627>
+    3392:	48 8d 15 df 55 00 00 	lea    rdx,[rip+0x55df]        # 8978 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627>
+    3399:	6a 24                	push   0x24
+    339b:	5e                   	pop    rsi
+    339c:	ff 15 46 5c 00 00    	call   QWORD PTR [rip+0x5c46]        # 8fe8 <core::panicking::panic>
+    33a2:	0f 0b                	ud2    
+
+00000000000033a4 <alloc::raw_vec::RawVec<T,A>::reserve>:
+    33a4:	41 56                	push   r14
+    33a6:	53                   	push   rbx
+    33a7:	48 83 ec 38          	sub    rsp,0x38
+    33ab:	48 89 fb             	mov    rbx,rdi
+    33ae:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
+    33b2:	48 89 f8             	mov    rax,rdi
+    33b5:	48 29 f0             	sub    rax,rsi
+    33b8:	48 39 d0             	cmp    rax,rdx
+    33bb:	73 77                	jae    3434 <alloc::raw_vec::RawVec<T,A>::reserve+0x90>
+    33bd:	48 01 d6             	add    rsi,rdx
+    33c0:	72 7f                	jb     3441 <alloc::raw_vec::RawVec<T,A>::reserve+0x9d>
+    33c2:	48 01 ff             	add    rdi,rdi
+    33c5:	48 39 f7             	cmp    rdi,rsi
+    33c8:	48 0f 46 fe          	cmovbe rdi,rsi
+    33cc:	6a 04                	push   0x4
+    33ce:	58                   	pop    rax
+    33cf:	48 39 c7             	cmp    rdi,rax
+    33d2:	48 0f 46 f8          	cmovbe rdi,rax
+    33d6:	e8 b0 fd ff ff       	call   318b <_ZN4core5alloc6layout6Layout5array17h1ef5c251a0443c85E.llvm.8423637217147767627>
+    33db:	48 8b 4b 08          	mov    rcx,QWORD PTR [rbx+0x8]
+    33df:	48 85 c9             	test   rcx,rcx
+    33e2:	74 1c                	je     3400 <alloc::raw_vec::RawVec<T,A>::reserve+0x5c>
+    33e4:	48 c1 e1 03          	shl    rcx,0x3
+    33e8:	48 8b 33             	mov    rsi,QWORD PTR [rbx]
+    33eb:	48 89 74 24 08       	mov    QWORD PTR [rsp+0x8],rsi
+    33f0:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    33f5:	48 c7 44 24 18 08 00 	mov    QWORD PTR [rsp+0x18],0x8
+    33fc:	00 00 
+    33fe:	eb 06                	jmp    3406 <alloc::raw_vec::RawVec<T,A>::reserve+0x62>
+    3400:	48 83 64 24 08 00    	and    QWORD PTR [rsp+0x8],0x0
+    3406:	4c 8d 74 24 20       	lea    r14,[rsp+0x20]
+    340b:	48 8d 4c 24 08       	lea    rcx,[rsp+0x8]
+    3410:	4c 89 f7             	mov    rdi,r14
+    3413:	48 89 c6             	mov    rsi,rax
+    3416:	e8 ba fd ff ff       	call   31d5 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627>
+    341b:	49 8b 7e 08          	mov    rdi,QWORD PTR [r14+0x8]
+    341f:	49 8b 76 10          	mov    rsi,QWORD PTR [r14+0x10]
+    3423:	49 83 3e 01          	cmp    QWORD PTR [r14],0x1
+    3427:	74 13                	je     343c <alloc::raw_vec::RawVec<T,A>::reserve+0x98>
+    3429:	48 89 3b             	mov    QWORD PTR [rbx],rdi
+    342c:	48 c1 ee 03          	shr    rsi,0x3
+    3430:	48 89 73 08          	mov    QWORD PTR [rbx+0x8],rsi
+    3434:	48 83 c4 38          	add    rsp,0x38
+    3438:	5b                   	pop    rbx
+    3439:	41 5e                	pop    r14
+    343b:	c3                   	ret    
+    343c:	48 85 f6             	test   rsi,rsi
+    343f:	75 08                	jne    3449 <alloc::raw_vec::RawVec<T,A>::reserve+0xa5>
+    3441:	ff 15 79 5a 00 00    	call   QWORD PTR [rip+0x5a79]        # 8ec0 <alloc::raw_vec::capacity_overflow>
+    3447:	0f 0b                	ud2    
+    3449:	ff 15 51 5a 00 00    	call   QWORD PTR [rip+0x5a51]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    344f:	0f 0b                	ud2    
+
+0000000000003451 <alloc::raw_vec::RawVec<T,A>::reserve>:
+    3451:	41 56                	push   r14
+    3453:	53                   	push   rbx
+    3454:	48 83 ec 38          	sub    rsp,0x38
+    3458:	48 89 fb             	mov    rbx,rdi
+    345b:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
+    345f:	48 89 f8             	mov    rax,rdi
+    3462:	48 29 f0             	sub    rax,rsi
+    3465:	48 39 d0             	cmp    rax,rdx
+    3468:	73 6f                	jae    34d9 <alloc::raw_vec::RawVec<T,A>::reserve+0x88>
+    346a:	48 01 d6             	add    rsi,rdx
+    346d:	72 77                	jb     34e6 <alloc::raw_vec::RawVec<T,A>::reserve+0x95>
+    346f:	48 01 ff             	add    rdi,rdi
+    3472:	48 39 f7             	cmp    rdi,rsi
+    3475:	48 0f 46 fe          	cmovbe rdi,rsi
+    3479:	6a 08                	push   0x8
+    347b:	58                   	pop    rax
+    347c:	48 39 c7             	cmp    rdi,rax
+    347f:	48 0f 46 f8          	cmovbe rdi,rax
+    3483:	e8 2c fd ff ff       	call   31b4 <_ZN4core5alloc6layout6Layout5array17h441828b63149341bE.llvm.8423637217147767627>
+    3488:	48 8b 4b 08          	mov    rcx,QWORD PTR [rbx+0x8]
+    348c:	48 85 c9             	test   rcx,rcx
+    348f:	74 18                	je     34a9 <alloc::raw_vec::RawVec<T,A>::reserve+0x58>
+    3491:	48 8b 33             	mov    rsi,QWORD PTR [rbx]
+    3494:	48 89 74 24 08       	mov    QWORD PTR [rsp+0x8],rsi
+    3499:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    349e:	48 c7 44 24 18 01 00 	mov    QWORD PTR [rsp+0x18],0x1
+    34a5:	00 00 
+    34a7:	eb 06                	jmp    34af <alloc::raw_vec::RawVec<T,A>::reserve+0x5e>
+    34a9:	48 83 64 24 08 00    	and    QWORD PTR [rsp+0x8],0x0
+    34af:	4c 8d 74 24 20       	lea    r14,[rsp+0x20]
+    34b4:	48 8d 4c 24 08       	lea    rcx,[rsp+0x8]
+    34b9:	4c 89 f7             	mov    rdi,r14
+    34bc:	48 89 c6             	mov    rsi,rax
+    34bf:	e8 11 fd ff ff       	call   31d5 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627>
+    34c4:	49 8b 7e 08          	mov    rdi,QWORD PTR [r14+0x8]
+    34c8:	49 8b 76 10          	mov    rsi,QWORD PTR [r14+0x10]
+    34cc:	49 83 3e 01          	cmp    QWORD PTR [r14],0x1
+    34d0:	74 0f                	je     34e1 <alloc::raw_vec::RawVec<T,A>::reserve+0x90>
+    34d2:	48 89 3b             	mov    QWORD PTR [rbx],rdi
+    34d5:	48 89 73 08          	mov    QWORD PTR [rbx+0x8],rsi
+    34d9:	48 83 c4 38          	add    rsp,0x38
+    34dd:	5b                   	pop    rbx
+    34de:	41 5e                	pop    r14
+    34e0:	c3                   	ret    
+    34e1:	48 85 f6             	test   rsi,rsi
+    34e4:	75 08                	jne    34ee <alloc::raw_vec::RawVec<T,A>::reserve+0x9d>
+    34e6:	ff 15 d4 59 00 00    	call   QWORD PTR [rip+0x59d4]        # 8ec0 <alloc::raw_vec::capacity_overflow>
+    34ec:	0f 0b                	ud2    
+    34ee:	ff 15 ac 59 00 00    	call   QWORD PTR [rip+0x59ac]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    34f4:	0f 0b                	ud2    
+
+00000000000034f6 <alloc::raw_vec::RawVec<T,A>::reserve>:
+    34f6:	41 56                	push   r14
+    34f8:	53                   	push   rbx
+    34f9:	48 83 ec 38          	sub    rsp,0x38
+    34fd:	48 8b 4f 08          	mov    rcx,QWORD PTR [rdi+0x8]
+    3501:	48 89 c8             	mov    rax,rcx
+    3504:	48 29 f0             	sub    rax,rsi
+    3507:	48 39 d0             	cmp    rax,rdx
+    350a:	0f 83 9d 00 00 00    	jae    35ad <alloc::raw_vec::RawVec<T,A>::reserve+0xb7>
+    3510:	48 01 d6             	add    rsi,rdx
+    3513:	0f 82 a1 00 00 00    	jb     35ba <alloc::raw_vec::RawVec<T,A>::reserve+0xc4>
+    3519:	49 89 fe             	mov    r14,rdi
+    351c:	48 8d 04 09          	lea    rax,[rcx+rcx*1]
+    3520:	48 39 f0             	cmp    rax,rsi
+    3523:	48 0f 47 f0          	cmova  rsi,rax
+    3527:	6a 04                	push   0x4
+    3529:	58                   	pop    rax
+    352a:	48 39 c6             	cmp    rsi,rax
+    352d:	48 0f 46 f0          	cmovbe rsi,rax
+    3531:	6a 10                	push   0x10
+    3533:	5a                   	pop    rdx
+    3534:	48 89 f0             	mov    rax,rsi
+    3537:	48 f7 e2             	mul    rdx
+    353a:	71 04                	jno    3540 <alloc::raw_vec::RawVec<T,A>::reserve+0x4a>
+    353c:	31 d2                	xor    edx,edx
+    353e:	eb 1b                	jmp    355b <alloc::raw_vec::RawVec<T,A>::reserve+0x65>
+    3540:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    3545:	48 89 07             	mov    QWORD PTR [rdi],rax
+    3548:	6a 08                	push   0x8
+    354a:	58                   	pop    rax
+    354b:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+    354f:	e8 e6 fb ff ff       	call   313a <_ZN4core5alloc6layout6Layout12pad_to_align17h26f3c45852202faaE.llvm.8423637217147767627>
+    3554:	48 89 c6             	mov    rsi,rax
+    3557:	49 8b 4e 08          	mov    rcx,QWORD PTR [r14+0x8]
+    355b:	48 85 c9             	test   rcx,rcx
+    355e:	74 1c                	je     357c <alloc::raw_vec::RawVec<T,A>::reserve+0x86>
+    3560:	48 c1 e1 04          	shl    rcx,0x4
+    3564:	49 8b 06             	mov    rax,QWORD PTR [r14]
+    3567:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+    356c:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    3571:	48 c7 44 24 18 08 00 	mov    QWORD PTR [rsp+0x18],0x8
+    3578:	00 00 
+    357a:	eb 06                	jmp    3582 <alloc::raw_vec::RawVec<T,A>::reserve+0x8c>
+    357c:	48 83 64 24 08 00    	and    QWORD PTR [rsp+0x8],0x0
+    3582:	48 8d 5c 24 20       	lea    rbx,[rsp+0x20]
+    3587:	48 8d 4c 24 08       	lea    rcx,[rsp+0x8]
+    358c:	48 89 df             	mov    rdi,rbx
+    358f:	e8 41 fc ff ff       	call   31d5 <_ZN5alloc7raw_vec11finish_grow17h96036201cb231828E.llvm.8423637217147767627>
+    3594:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
+    3598:	48 8b 73 10          	mov    rsi,QWORD PTR [rbx+0x10]
+    359c:	48 83 3b 01          	cmp    QWORD PTR [rbx],0x1
+    35a0:	74 13                	je     35b5 <alloc::raw_vec::RawVec<T,A>::reserve+0xbf>
+    35a2:	49 89 3e             	mov    QWORD PTR [r14],rdi
+    35a5:	48 c1 ee 04          	shr    rsi,0x4
+    35a9:	49 89 76 08          	mov    QWORD PTR [r14+0x8],rsi
+    35ad:	48 83 c4 38          	add    rsp,0x38
+    35b1:	5b                   	pop    rbx
+    35b2:	41 5e                	pop    r14
+    35b4:	c3                   	ret    
+    35b5:	48 85 f6             	test   rsi,rsi
+    35b8:	75 08                	jne    35c2 <alloc::raw_vec::RawVec<T,A>::reserve+0xcc>
+    35ba:	ff 15 00 59 00 00    	call   QWORD PTR [rip+0x5900]        # 8ec0 <alloc::raw_vec::capacity_overflow>
+    35c0:	0f 0b                	ud2    
+    35c2:	ff 15 d8 58 00 00    	call   QWORD PTR [rip+0x58d8]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    35c8:	0f 0b                	ud2    
+
+00000000000035ca <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627>:
+    35ca:	53                   	push   rbx
+    35cb:	48 89 f0             	mov    rax,rsi
+    35ce:	48 89 fb             	mov    rbx,rdi
+    35d1:	48 85 ff             	test   rdi,rdi
+    35d4:	74 18                	je     35ee <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627+0x24>
+    35d6:	48 89 df             	mov    rdi,rbx
+    35d9:	48 89 c6             	mov    rsi,rax
+    35dc:	84 d2                	test   dl,dl
+    35de:	74 08                	je     35e8 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627+0x1e>
+    35e0:	ff 15 12 59 00 00    	call   QWORD PTR [rip+0x5912]        # 8ef8 <__rust_alloc_zeroed>
+    35e6:	eb 06                	jmp    35ee <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$5alloc17haad717818dc3a302E.llvm.8423637217147767627+0x24>
+    35e8:	ff 15 f2 58 00 00    	call   QWORD PTR [rip+0x58f2]        # 8ee0 <__rust_alloc>
+    35ee:	48 89 da             	mov    rdx,rbx
+    35f1:	5b                   	pop    rbx
+    35f2:	c3                   	ret    
+
+00000000000035f3 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627>:
+    35f3:	48 85 f6             	test   rsi,rsi
+    35f6:	74 06                	je     35fe <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627+0xb>
+    35f8:	ff 25 f2 58 00 00    	jmp    QWORD PTR [rip+0x58f2]        # 8ef0 <__rust_dealloc>
+    35fe:	c3                   	ret    
+
+00000000000035ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>:
+    35ff:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3603:	48 85 f6             	test   rsi,rsi
+    3606:	74 0f                	je     3617 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop+0x18>
+    3608:	48 c1 e6 03          	shl    rsi,0x3
+    360c:	48 8b 3f             	mov    rdi,QWORD PTR [rdi]
+    360f:	6a 08                	push   0x8
+    3611:	5a                   	pop    rdx
+    3612:	e9 dc ff ff ff       	jmp    35f3 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627>
+    3617:	c3                   	ret    
+
+0000000000003618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>:
+    3618:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    361c:	48 85 f6             	test   rsi,rsi
+    361f:	74 0b                	je     362c <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop+0x14>
+    3621:	48 8b 3f             	mov    rdi,QWORD PTR [rdi]
+    3624:	6a 01                	push   0x1
+    3626:	5a                   	pop    rdx
+    3627:	e9 c7 ff ff ff       	jmp    35f3 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627>
+    362c:	c3                   	ret    
+
+000000000000362d <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>:
+    362d:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3631:	48 85 f6             	test   rsi,rsi
+    3634:	74 0f                	je     3645 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop+0x18>
+    3636:	48 c1 e6 04          	shl    rsi,0x4
+    363a:	48 8b 3f             	mov    rdi,QWORD PTR [rdi]
+    363d:	6a 08                	push   0x8
+    363f:	5a                   	pop    rdx
+    3640:	e9 ae ff ff ff       	jmp    35f3 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.8423637217147767627>
+    3645:	c3                   	ret    
+
+0000000000003646 <_ZN4core3ptr13drop_in_place17h265bae7ea17f4ec3E.llvm.12257991427376753888>:
+    3646:	e9 cd ff ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+000000000000364b <core::ptr::drop_in_place>:
+    364b:	e9 af ff ff ff       	jmp    35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000003650 <core::ptr::drop_in_place>:
+    3650:	e9 d8 ff ff ff       	jmp    362d <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000003655 <alloc::slice::merge_sort>:
+    3655:	55                   	push   rbp
+    3656:	41 57                	push   r15
+    3658:	41 56                	push   r14
+    365a:	41 55                	push   r13
+    365c:	41 54                	push   r12
+    365e:	53                   	push   rbx
+    365f:	48 83 ec 78          	sub    rsp,0x78
+    3663:	49 89 f7             	mov    r15,rsi
+    3666:	48 89 7c 24 08       	mov    QWORD PTR [rsp+0x8],rdi
+    366b:	48 83 fe 15          	cmp    rsi,0x15
+    366f:	73 45                	jae    36b6 <alloc::slice::merge_sort+0x61>
+    3671:	49 83 ff 02          	cmp    r15,0x2
+    3675:	0f 82 0b 04 00 00    	jb     3a86 <alloc::slice::merge_sort+0x431>
+    367b:	49 8d 5f fe          	lea    rbx,[r15-0x2]
+    367f:	48 8d 2d 0a 53 00 00 	lea    rbp,[rip+0x530a]        # 8990 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x18>
+    3686:	48 83 fb ff          	cmp    rbx,0xffffffffffffffff
+    368a:	0f 84 f6 03 00 00    	je     3a86 <alloc::slice::merge_sort+0x431>
+    3690:	48 89 df             	mov    rdi,rbx
+    3693:	4c 89 fe             	mov    rsi,r15
+    3696:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+    369b:	4c 89 f9             	mov    rcx,r15
+    369e:	49 89 e8             	mov    r8,rbp
+    36a1:	e8 e8 04 00 00       	call   3b8e <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut>
+    36a6:	48 ff cb             	dec    rbx
+    36a9:	48 89 c7             	mov    rdi,rax
+    36ac:	48 89 d6             	mov    rsi,rdx
+    36af:	e8 23 04 00 00       	call   3ad7 <alloc::slice::insert_head>
+    36b4:	eb d0                	jmp    3686 <alloc::slice::merge_sort+0x31>
+    36b6:	4c 89 ff             	mov    rdi,r15
+    36b9:	48 d1 ef             	shr    rdi,1
+    36bc:	31 f6                	xor    esi,esi
+    36be:	e8 9c fb ff ff       	call   325f <alloc::raw_vec::RawVec<T,A>::allocate_in>
+    36c3:	48 89 44 24 60       	mov    QWORD PTR [rsp+0x60],rax
+    36c8:	48 89 54 24 68       	mov    QWORD PTR [rsp+0x68],rdx
+    36cd:	48 83 64 24 70 00    	and    QWORD PTR [rsp+0x70],0x0
+    36d3:	6a 08                	push   0x8
+    36d5:	58                   	pop    rax
+    36d6:	48 8d 4c 24 10       	lea    rcx,[rsp+0x10]
+    36db:	48 89 01             	mov    QWORD PTR [rcx],rax
+    36de:	0f 57 c0             	xorps  xmm0,xmm0
+    36e1:	0f 11 41 08          	movups XMMWORD PTR [rcx+0x8],xmm0
+    36e5:	48 8d 2d d4 52 00 00 	lea    rbp,[rip+0x52d4]        # 89c0 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x48>
+    36ec:	4d 89 fe             	mov    r14,r15
+    36ef:	4c 89 7c 24 30       	mov    QWORD PTR [rsp+0x30],r15
+    36f4:	4d 85 f6             	test   r14,r14
+    36f7:	0f 84 75 03 00 00    	je     3a72 <alloc::slice::merge_sort+0x41d>
+    36fd:	4d 89 f4             	mov    r12,r14
+    3700:	49 ff cc             	dec    r12
+    3703:	0f 84 a1 00 00 00    	je     37aa <alloc::slice::merge_sort+0x155>
+    3709:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    370e:	4a 8b 44 f1 f0       	mov    rax,QWORD PTR [rcx+r14*8-0x10]
+    3713:	4a 39 44 f1 f8       	cmp    QWORD PTR [rcx+r14*8-0x8],rax
+    3718:	73 73                	jae    378d <alloc::slice::merge_sort+0x138>
+    371a:	49 8d 4e fd          	lea    rcx,[r14-0x3]
+    371e:	49 89 cc             	mov    r12,rcx
+    3721:	48 83 f9 ff          	cmp    rcx,0xffffffffffffffff
+    3725:	74 16                	je     373d <alloc::slice::merge_sort+0xe8>
+    3727:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    372c:	4a 8b 14 e1          	mov    rdx,QWORD PTR [rcx+r12*8]
+    3730:	49 8d 4c 24 ff       	lea    rcx,[r12-0x1]
+    3735:	48 39 d0             	cmp    rax,rdx
+    3738:	48 89 d0             	mov    rax,rdx
+    373b:	72 e1                	jb     371e <alloc::slice::merge_sort+0xc9>
+    373d:	49 ff c4             	inc    r12
+    3740:	4c 89 e7             	mov    rdi,r12
+    3743:	4c 89 f6             	mov    rsi,r14
+    3746:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+    374b:	4c 89 f9             	mov    rcx,r15
+    374e:	4c 8d 05 53 52 00 00 	lea    r8,[rip+0x5253]        # 89a8 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x30>
+    3755:	e8 34 04 00 00       	call   3b8e <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut>
+    375a:	48 8d 0c d0          	lea    rcx,[rax+rdx*8]
+    375e:	48 83 c1 f8          	add    rcx,0xfffffffffffffff8
+    3762:	48 d1 ea             	shr    rdx,1
+    3765:	48 f7 da             	neg    rdx
+    3768:	31 f6                	xor    esi,esi
+    376a:	48 39 f2             	cmp    rdx,rsi
+    376d:	74 3e                	je     37ad <alloc::slice::merge_sort+0x158>
+    376f:	48 8b 38             	mov    rdi,QWORD PTR [rax]
+    3772:	48 8b 2c f1          	mov    rbp,QWORD PTR [rcx+rsi*8]
+    3776:	48 89 28             	mov    QWORD PTR [rax],rbp
+    3779:	48 8d 2d 40 52 00 00 	lea    rbp,[rip+0x5240]        # 89c0 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x48>
+    3780:	48 89 3c f1          	mov    QWORD PTR [rcx+rsi*8],rdi
+    3784:	48 83 c0 08          	add    rax,0x8
+    3788:	48 ff ce             	dec    rsi
+    378b:	eb dd                	jmp    376a <alloc::slice::merge_sort+0x115>
+    378d:	49 83 fc 01          	cmp    r12,0x1
+    3791:	74 17                	je     37aa <alloc::slice::merge_sort+0x155>
+    3793:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    3798:	4a 8b 4c e1 f0       	mov    rcx,QWORD PTR [rcx+r12*8-0x10]
+    379d:	49 ff cc             	dec    r12
+    37a0:	48 39 c8             	cmp    rax,rcx
+    37a3:	48 89 c8             	mov    rax,rcx
+    37a6:	73 e5                	jae    378d <alloc::slice::merge_sort+0x138>
+    37a8:	eb 03                	jmp    37ad <alloc::slice::merge_sort+0x158>
+    37aa:	45 31 e4             	xor    r12d,r12d
+    37ad:	4c 89 f3             	mov    rbx,r14
+    37b0:	4c 29 e3             	sub    rbx,r12
+    37b3:	4d 85 e4             	test   r12,r12
+    37b6:	74 2f                	je     37e7 <alloc::slice::merge_sort+0x192>
+    37b8:	48 83 fb 0a          	cmp    rbx,0xa
+    37bc:	73 29                	jae    37e7 <alloc::slice::merge_sort+0x192>
+    37be:	49 ff cc             	dec    r12
+    37c1:	4c 89 e7             	mov    rdi,r12
+    37c4:	4c 89 f6             	mov    rsi,r14
+    37c7:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+    37cc:	4c 89 f9             	mov    rcx,r15
+    37cf:	49 89 e8             	mov    r8,rbp
+    37d2:	e8 b7 03 00 00       	call   3b8e <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut>
+    37d7:	48 ff c3             	inc    rbx
+    37da:	48 89 c7             	mov    rdi,rax
+    37dd:	48 89 d6             	mov    rsi,rdx
+    37e0:	e8 f2 02 00 00       	call   3ad7 <alloc::slice::insert_head>
+    37e5:	eb cc                	jmp    37b3 <alloc::slice::merge_sort+0x15e>
+    37e7:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+    37ec:	48 3b 44 24 18       	cmp    rax,QWORD PTR [rsp+0x18]
+    37f1:	75 12                	jne    3805 <alloc::slice::merge_sort+0x1b0>
+    37f3:	48 8d 7c 24 10       	lea    rdi,[rsp+0x10]
+    37f8:	6a 01                	push   0x1
+    37fa:	5e                   	pop    rsi
+    37fb:	e8 90 07 00 00       	call   3f90 <alloc::vec::Vec<T>::reserve>
+    3800:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+    3805:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+    380a:	48 c1 e0 04          	shl    rax,0x4
+    380e:	4c 89 24 01          	mov    QWORD PTR [rcx+rax*1],r12
+    3812:	48 89 5c 01 08       	mov    QWORD PTR [rcx+rax*1+0x8],rbx
+    3817:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+    381c:	48 ff c0             	inc    rax
+    381f:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
+    3824:	48 8d 5c 24 10       	lea    rbx,[rsp+0x10]
+    3829:	4c 89 64 24 40       	mov    QWORD PTR [rsp+0x40],r12
+    382e:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+    3833:	48 83 f8 02          	cmp    rax,0x2
+    3837:	0f 82 26 02 00 00    	jb     3a63 <alloc::slice::merge_sort+0x40e>
+    383d:	48 8d 68 ff          	lea    rbp,[rax-0x1]
+    3841:	48 c1 e5 04          	shl    rbp,0x4
+    3845:	48 83 3c 29 00       	cmp    QWORD PTR [rcx+rbp*1],0x0
+    384a:	74 52                	je     389e <alloc::slice::merge_sort+0x249>
+    384c:	48 89 c7             	mov    rdi,rax
+    384f:	48 c1 e7 04          	shl    rdi,0x4
+    3853:	48 8b 54 0f e8       	mov    rdx,QWORD PTR [rdi+rcx*1-0x18]
+    3858:	4c 8b 44 29 08       	mov    r8,QWORD PTR [rcx+rbp*1+0x8]
+    385d:	4c 39 c2             	cmp    rdx,r8
+    3860:	76 3c                	jbe    389e <alloc::slice::merge_sort+0x249>
+    3862:	48 83 f8 02          	cmp    rax,0x2
+    3866:	0f 86 f7 01 00 00    	jbe    3a63 <alloc::slice::merge_sort+0x40e>
+    386c:	4c 8d 68 fd          	lea    r13,[rax-0x3]
+    3870:	4c 89 ee             	mov    rsi,r13
+    3873:	48 c1 e6 04          	shl    rsi,0x4
+    3877:	48 8b 74 31 08       	mov    rsi,QWORD PTR [rcx+rsi*1+0x8]
+    387c:	49 8d 2c 10          	lea    rbp,[r8+rdx*1]
+    3880:	48 39 ee             	cmp    rsi,rbp
+    3883:	76 34                	jbe    38b9 <alloc::slice::merge_sort+0x264>
+    3885:	48 83 f8 03          	cmp    rax,0x3
+    3889:	0f 86 d4 01 00 00    	jbe    3a63 <alloc::slice::merge_sort+0x40e>
+    388f:	48 01 f2             	add    rdx,rsi
+    3892:	48 39 54 0f c8       	cmp    QWORD PTR [rdi+rcx*1-0x38],rdx
+    3897:	76 20                	jbe    38b9 <alloc::slice::merge_sort+0x264>
+    3899:	e9 c5 01 00 00       	jmp    3a63 <alloc::slice::merge_sort+0x40e>
+    389e:	48 83 f8 03          	cmp    rax,0x3
+    38a2:	72 1a                	jb     38be <alloc::slice::merge_sort+0x269>
+    38a4:	4c 8d 68 fd          	lea    r13,[rax-0x3]
+    38a8:	4c 89 ea             	mov    rdx,r13
+    38ab:	48 c1 e2 04          	shl    rdx,0x4
+    38af:	48 8b 74 11 08       	mov    rsi,QWORD PTR [rcx+rdx*1+0x8]
+    38b4:	4c 8b 44 29 08       	mov    r8,QWORD PTR [rcx+rbp*1+0x8]
+    38b9:	4c 39 c6             	cmp    rsi,r8
+    38bc:	72 07                	jb     38c5 <alloc::slice::merge_sort+0x270>
+    38be:	48 83 c0 fe          	add    rax,0xfffffffffffffffe
+    38c2:	49 89 c5             	mov    r13,rax
+    38c5:	49 8d 6d 01          	lea    rbp,[r13+0x1]
+    38c9:	48 89 df             	mov    rdi,rbx
+    38cc:	48 89 ee             	mov    rsi,rbp
+    38cf:	48 8d 15 02 51 00 00 	lea    rdx,[rip+0x5102]        # 89d8 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x60>
+    38d6:	e8 92 02 00 00       	call   3b6d <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    38db:	4c 8b 30             	mov    r14,QWORD PTR [rax]
+    38de:	48 8b 40 08          	mov    rax,QWORD PTR [rax+0x8]
+    38e2:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
+    38e7:	48 89 df             	mov    rdi,rbx
+    38ea:	4c 89 ee             	mov    rsi,r13
+    38ed:	48 8d 15 fc 50 00 00 	lea    rdx,[rip+0x50fc]        # 89f0 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x78>
+    38f4:	e8 74 02 00 00       	call   3b6d <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    38f9:	48 8b 58 08          	mov    rbx,QWORD PTR [rax+0x8]
+    38fd:	48 8b 30             	mov    rsi,QWORD PTR [rax]
+    3900:	48 01 de             	add    rsi,rbx
+    3903:	4c 89 f7             	mov    rdi,r14
+    3906:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+    390b:	48 8b 4c 24 30       	mov    rcx,QWORD PTR [rsp+0x30]
+    3910:	4c 8d 05 f1 50 00 00 	lea    r8,[rip+0x50f1]        # 8a08 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x90>
+    3917:	e8 72 02 00 00       	call   3b8e <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut>
+    391c:	49 89 c4             	mov    r12,rax
+    391f:	49 89 d7             	mov    r15,rdx
+    3922:	48 89 5c 24 48       	mov    QWORD PTR [rsp+0x48],rbx
+    3927:	4c 89 74 24 28       	mov    QWORD PTR [rsp+0x28],r14
+    392c:	48 89 6c 24 50       	mov    QWORD PTR [rsp+0x50],rbp
+    3931:	4c 89 6c 24 58       	mov    QWORD PTR [rsp+0x58],r13
+    3936:	4c 8b 74 24 60       	mov    r14,QWORD PTR [rsp+0x60]
+    393b:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
+    3940:	49 8d 1c c4          	lea    rbx,[r12+rax*8]
+    3944:	48 89 d5             	mov    rbp,rdx
+    3947:	48 29 c5             	sub    rbp,rax
+    394a:	48 39 c5             	cmp    rbp,rax
+    394d:	73 5a                	jae    39a9 <alloc::slice::merge_sort+0x354>
+    394f:	48 8d 14 ed 00 00 00 	lea    rdx,[rbp*8+0x0]
+    3956:	00 
+    3957:	4c 89 f7             	mov    rdi,r14
+    395a:	48 89 de             	mov    rsi,rbx
+    395d:	ff 15 c5 55 00 00    	call   QWORD PTR [rip+0x55c5]        # 8f28 <memcpy@GLIBC_2.14>
+    3963:	49 8d 14 ee          	lea    rdx,[r14+rbp*8]
+    3967:	4b 8d 04 fc          	lea    rax,[r12+r15*8]
+    396b:	48 83 c0 f8          	add    rax,0xfffffffffffffff8
+    396f:	4c 8b 7c 24 28       	mov    r15,QWORD PTR [rsp+0x28]
+    3974:	6a f8                	push   0xfffffffffffffff8
+    3976:	41 58                	pop    r8
+    3978:	4c 39 f2             	cmp    rdx,r14
+    397b:	76 7f                	jbe    39fc <alloc::slice::merge_sort+0x3a7>
+    397d:	49 39 dc             	cmp    r12,rbx
+    3980:	73 7a                	jae    39fc <alloc::slice::merge_sort+0x3a7>
+    3982:	4a 8d 0c 02          	lea    rcx,[rdx+r8*1]
+    3986:	4a 8d 34 03          	lea    rsi,[rbx+r8*1]
+    398a:	48 8b 7a f8          	mov    rdi,QWORD PTR [rdx-0x8]
+    398e:	48 8b 6b f8          	mov    rbp,QWORD PTR [rbx-0x8]
+    3992:	48 39 ef             	cmp    rdi,rbp
+    3995:	48 0f 43 d1          	cmovae rdx,rcx
+    3999:	48 0f 42 de          	cmovb  rbx,rsi
+    399d:	48 0f 42 fd          	cmovb  rdi,rbp
+    39a1:	48 89 38             	mov    QWORD PTR [rax],rdi
+    39a4:	4c 01 c0             	add    rax,r8
+    39a7:	eb cf                	jmp    3978 <alloc::slice::merge_sort+0x323>
+    39a9:	4b 8d 2c fc          	lea    rbp,[r12+r15*8]
+    39ad:	49 89 c7             	mov    r15,rax
+    39b0:	48 8d 14 c5 00 00 00 	lea    rdx,[rax*8+0x0]
+    39b7:	00 
+    39b8:	4c 89 f7             	mov    rdi,r14
+    39bb:	4c 89 e6             	mov    rsi,r12
+    39be:	ff 15 64 55 00 00    	call   QWORD PTR [rip+0x5564]        # 8f28 <memcpy@GLIBC_2.14>
+    39c4:	4b 8d 14 fe          	lea    rdx,[r14+r15*8]
+    39c8:	4c 8b 7c 24 28       	mov    r15,QWORD PTR [rsp+0x28]
+    39cd:	49 39 d6             	cmp    r14,rdx
+    39d0:	73 27                	jae    39f9 <alloc::slice::merge_sort+0x3a4>
+    39d2:	48 39 eb             	cmp    rbx,rbp
+    39d5:	73 22                	jae    39f9 <alloc::slice::merge_sort+0x3a4>
+    39d7:	48 8b 0b             	mov    rcx,QWORD PTR [rbx]
+    39da:	49 8b 06             	mov    rax,QWORD PTR [r14]
+    39dd:	48 39 c1             	cmp    rcx,rax
+    39e0:	73 09                	jae    39eb <alloc::slice::merge_sort+0x396>
+    39e2:	48 83 c3 08          	add    rbx,0x8
+    39e6:	48 89 c8             	mov    rax,rcx
+    39e9:	eb 04                	jmp    39ef <alloc::slice::merge_sort+0x39a>
+    39eb:	49 83 c6 08          	add    r14,0x8
+    39ef:	49 89 04 24          	mov    QWORD PTR [r12],rax
+    39f3:	49 83 c4 08          	add    r12,0x8
+    39f7:	eb d4                	jmp    39cd <alloc::slice::merge_sort+0x378>
+    39f9:	4c 89 e3             	mov    rbx,r12
+    39fc:	4c 29 f2             	sub    rdx,r14
+    39ff:	48 83 e2 f8          	and    rdx,0xfffffffffffffff8
+    3a03:	48 89 df             	mov    rdi,rbx
+    3a06:	4c 89 f6             	mov    rsi,r14
+    3a09:	ff 15 19 55 00 00    	call   QWORD PTR [rip+0x5519]        # 8f28 <memcpy@GLIBC_2.14>
+    3a0f:	48 8b 74 24 20       	mov    rsi,QWORD PTR [rsp+0x20]
+    3a14:	48 8b 7c 24 58       	mov    rdi,QWORD PTR [rsp+0x58]
+    3a19:	48 39 fe             	cmp    rsi,rdi
+    3a1c:	48 8b 4c 24 50       	mov    rcx,QWORD PTR [rsp+0x50]
+    3a21:	76 72                	jbe    3a95 <alloc::slice::merge_sort+0x440>
+    3a23:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    3a28:	48 8b 54 24 48       	mov    rdx,QWORD PTR [rsp+0x48]
+    3a2d:	48 03 54 24 38       	add    rdx,QWORD PTR [rsp+0x38]
+    3a32:	48 c1 e7 04          	shl    rdi,0x4
+    3a36:	4c 89 3c 38          	mov    QWORD PTR [rax+rdi*1],r15
+    3a3a:	48 89 54 38 08       	mov    QWORD PTR [rax+rdi*1+0x8],rdx
+    3a3f:	48 8d 5c 24 10       	lea    rbx,[rsp+0x10]
+    3a44:	48 89 df             	mov    rdi,rbx
+    3a47:	48 89 ce             	mov    rsi,rcx
+    3a4a:	e8 d5 04 00 00       	call   3f24 <alloc::vec::Vec<T>::remove>
+    3a4f:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+    3a54:	4c 8b 7c 24 30       	mov    r15,QWORD PTR [rsp+0x30]
+    3a59:	4c 8b 64 24 40       	mov    r12,QWORD PTR [rsp+0x40]
+    3a5e:	e9 cb fd ff ff       	jmp    382e <alloc::slice::merge_sort+0x1d9>
+    3a63:	4d 89 e6             	mov    r14,r12
+    3a66:	48 8d 2d 53 4f 00 00 	lea    rbp,[rip+0x4f53]        # 89c0 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0x48>
+    3a6d:	e9 82 fc ff ff       	jmp    36f4 <alloc::slice::merge_sort+0x9f>
+    3a72:	48 8d 7c 24 10       	lea    rdi,[rsp+0x10]
+    3a77:	e8 b1 fb ff ff       	call   362d <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+    3a7c:	48 8d 7c 24 60       	lea    rdi,[rsp+0x60]
+    3a81:	e8 79 fb ff ff       	call   35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+    3a86:	48 83 c4 78          	add    rsp,0x78
+    3a8a:	5b                   	pop    rbx
+    3a8b:	41 5c                	pop    r12
+    3a8d:	41 5d                	pop    r13
+    3a8f:	41 5e                	pop    r14
+    3a91:	41 5f                	pop    r15
+    3a93:	5d                   	pop    rbp
+    3a94:	c3                   	ret    
+    3a95:	48 8d 15 84 4f 00 00 	lea    rdx,[rip+0x4f84]        # 8a20 <anon.4edb19371b067e507ce45a8c53a011f9.6.llvm.8423637217147767627+0xa8>
+    3a9c:	ff 15 6e 54 00 00    	call   QWORD PTR [rip+0x546e]        # 8f10 <core::panicking::panic_bounds_check>
+    3aa2:	0f 0b                	ud2    
+    3aa4:	eb 10                	jmp    3ab6 <alloc::slice::merge_sort+0x461>
+    3aa6:	48 89 c3             	mov    rbx,rax
+    3aa9:	eb 18                	jmp    3ac3 <alloc::slice::merge_sort+0x46e>
+    3aab:	eb 02                	jmp    3aaf <alloc::slice::merge_sort+0x45a>
+    3aad:	eb 07                	jmp    3ab6 <alloc::slice::merge_sort+0x461>
+    3aaf:	48 89 c3             	mov    rbx,rax
+    3ab2:	eb 19                	jmp    3acd <alloc::slice::merge_sort+0x478>
+    3ab4:	eb 00                	jmp    3ab6 <alloc::slice::merge_sort+0x461>
+    3ab6:	48 89 c3             	mov    rbx,rax
+    3ab9:	48 8d 7c 24 10       	lea    rdi,[rsp+0x10]
+    3abe:	e8 8d fb ff ff       	call   3650 <core::ptr::drop_in_place>
+    3ac3:	48 8d 7c 24 60       	lea    rdi,[rsp+0x60]
+    3ac8:	e8 7e fb ff ff       	call   364b <core::ptr::drop_in_place>
+    3acd:	48 89 df             	mov    rdi,rbx
+    3ad0:	e8 5b f5 ff ff       	call   3030 <_Unwind_Resume@plt>
+    3ad5:	0f 0b                	ud2    
+
+0000000000003ad7 <alloc::slice::insert_head>:
+    3ad7:	48 83 fe 02          	cmp    rsi,0x2
+    3adb:	72 3f                	jb     3b1c <alloc::slice::insert_head+0x45>
+    3add:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3ae0:	48 8b 4f 08          	mov    rcx,QWORD PTR [rdi+0x8]
+    3ae4:	48 39 c1             	cmp    rcx,rax
+    3ae7:	73 33                	jae    3b1c <alloc::slice::insert_head+0x45>
+    3ae9:	48 89 0f             	mov    QWORD PTR [rdi],rcx
+    3aec:	48 8d 0c f7          	lea    rcx,[rdi+rsi*8]
+    3af0:	48 83 c1 f8          	add    rcx,0xfffffffffffffff8
+    3af4:	48 83 c7 08          	add    rdi,0x8
+    3af8:	48 83 c6 fe          	add    rsi,0xfffffffffffffffe
+    3afc:	48 85 f6             	test   rsi,rsi
+    3aff:	74 18                	je     3b19 <alloc::slice::insert_head+0x42>
+    3b01:	48 8b 57 08          	mov    rdx,QWORD PTR [rdi+0x8]
+    3b05:	48 39 c2             	cmp    rdx,rax
+    3b08:	73 0c                	jae    3b16 <alloc::slice::insert_head+0x3f>
+    3b0a:	48 89 17             	mov    QWORD PTR [rdi],rdx
+    3b0d:	48 83 c7 08          	add    rdi,0x8
+    3b11:	48 ff ce             	dec    rsi
+    3b14:	eb e6                	jmp    3afc <alloc::slice::insert_head+0x25>
+    3b16:	48 89 f9             	mov    rcx,rdi
+    3b19:	48 89 01             	mov    QWORD PTR [rcx],rax
+    3b1c:	c3                   	ret    
+
+0000000000003b1d <alloc::slice::<impl alloc::borrow::ToOwned for [T]>::to_owned>:
+    3b1d:	41 57                	push   r15
+    3b1f:	41 56                	push   r14
+    3b21:	53                   	push   rbx
+    3b22:	49 89 d6             	mov    r14,rdx
+    3b25:	49 89 f7             	mov    r15,rsi
+    3b28:	48 89 fb             	mov    rbx,rdi
+    3b2b:	48 89 d7             	mov    rdi,rdx
+    3b2e:	31 f6                	xor    esi,esi
+    3b30:	e8 74 f7 ff ff       	call   32a9 <alloc::raw_vec::RawVec<T,A>::allocate_in>
+    3b35:	48 89 03             	mov    QWORD PTR [rbx],rax
+    3b38:	48 89 53 08          	mov    QWORD PTR [rbx+0x8],rdx
+    3b3c:	48 83 63 10 00       	and    QWORD PTR [rbx+0x10],0x0
+    3b41:	48 89 df             	mov    rdi,rbx
+    3b44:	4c 89 fe             	mov    rsi,r15
+    3b47:	4c 89 f2             	mov    rdx,r14
+    3b4a:	e8 90 03 00 00       	call   3edf <alloc::vec::Vec<T>::extend_from_slice>
+    3b4f:	48 89 d8             	mov    rax,rbx
+    3b52:	5b                   	pop    rbx
+    3b53:	41 5e                	pop    r14
+    3b55:	41 5f                	pop    r15
+    3b57:	c3                   	ret    
+    3b58:	49 89 c6             	mov    r14,rax
+    3b5b:	48 89 df             	mov    rdi,rbx
+    3b5e:	e8 e3 fa ff ff       	call   3646 <_ZN4core3ptr13drop_in_place17h265bae7ea17f4ec3E.llvm.12257991427376753888>
+    3b63:	4c 89 f7             	mov    rdi,r14
+    3b66:	e8 c5 f4 ff ff       	call   3030 <_Unwind_Resume@plt>
+    3b6b:	0f 0b                	ud2    
+
+0000000000003b6d <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>:
+    3b6d:	50                   	push   rax
+    3b6e:	48 89 f0             	mov    rax,rsi
+    3b71:	48 8b 77 10          	mov    rsi,QWORD PTR [rdi+0x10]
+    3b75:	48 39 c6             	cmp    rsi,rax
+    3b78:	76 09                	jbe    3b83 <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index+0x16>
+    3b7a:	48 c1 e0 04          	shl    rax,0x4
+    3b7e:	48 03 07             	add    rax,QWORD PTR [rdi]
+    3b81:	59                   	pop    rcx
+    3b82:	c3                   	ret    
+    3b83:	48 89 c7             	mov    rdi,rax
+    3b86:	ff 15 84 53 00 00    	call   QWORD PTR [rip+0x5384]        # 8f10 <core::panicking::panic_bounds_check>
+    3b8c:	0f 0b                	ud2    
+
+0000000000003b8e <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut>:
+    3b8e:	50                   	push   rax
+    3b8f:	49 89 f1             	mov    r9,rsi
+    3b92:	49 29 f9             	sub    r9,rdi
+    3b95:	72 0e                	jb     3ba5 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut+0x17>
+    3b97:	48 39 f1             	cmp    rcx,rsi
+    3b9a:	72 14                	jb     3bb0 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index_mut+0x22>
+    3b9c:	48 8d 04 fa          	lea    rax,[rdx+rdi*8]
+    3ba0:	4c 89 ca             	mov    rdx,r9
+    3ba3:	59                   	pop    rcx
+    3ba4:	c3                   	ret    
+    3ba5:	4c 89 c2             	mov    rdx,r8
+    3ba8:	ff 15 9a 53 00 00    	call   QWORD PTR [rip+0x539a]        # 8f48 <core::slice::slice_index_order_fail>
+    3bae:	0f 0b                	ud2    
+    3bb0:	48 89 f7             	mov    rdi,rsi
+    3bb3:	48 89 ce             	mov    rsi,rcx
+    3bb6:	4c 89 c2             	mov    rdx,r8
+    3bb9:	ff 15 f9 53 00 00    	call   QWORD PTR [rip+0x53f9]        # 8fb8 <core::slice::slice_index_len_fail>
+    3bbf:	0f 0b                	ud2    
+
+0000000000003bc1 <std::error::Error::cause>:
+    3bc1:	31 c0                	xor    eax,eax
+    3bc3:	c3                   	ret    
+
+0000000000003bc4 <std::error::Error::source>:
+    3bc4:	31 c0                	xor    eax,eax
+    3bc6:	c3                   	ret    
+
+0000000000003bc7 <std::error::Error::type_id>:
+    3bc7:	48 b8 e6 b0 70 82 6b 	movabs rax,0x392cc96b8270b0e6
+    3bce:	c9 2c 39 
+    3bd1:	c3                   	ret    
+
+0000000000003bd2 <std::error::Error::backtrace>:
+    3bd2:	31 c0                	xor    eax,eax
+    3bd4:	c3                   	ret    
+
+0000000000003bd5 <core::ptr::drop_in_place>:
+    3bd5:	c3                   	ret    
+
+0000000000003bd6 <<T as core::convert::Into<U>>::into>:
+    3bd6:	53                   	push   rbx
+    3bd7:	89 fb                	mov    ebx,edi
+    3bd9:	6a 01                	push   0x1
+    3bdb:	5f                   	pop    rdi
+    3bdc:	48 89 fe             	mov    rsi,rdi
+    3bdf:	ff 15 fb 52 00 00    	call   QWORD PTR [rip+0x52fb]        # 8ee0 <__rust_alloc>
+    3be5:	48 85 c0             	test   rax,rax
+    3be8:	74 0b                	je     3bf5 <<T as core::convert::Into<U>>::into+0x1f>
+    3bea:	88 18                	mov    BYTE PTR [rax],bl
+    3bec:	48 8d 15 45 4e 00 00 	lea    rdx,[rip+0x4e45]        # 8a38 <anon.f7f72bdb71e7b79194576956ef7cf223.0.llvm.10899888849851428307>
+    3bf3:	5b                   	pop    rbx
+    3bf4:	c3                   	ret    
+    3bf5:	6a 01                	push   0x1
+    3bf7:	5f                   	pop    rdi
+    3bf8:	48 89 fe             	mov    rsi,rdi
+    3bfb:	ff 15 9f 52 00 00    	call   QWORD PTR [rip+0x529f]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    3c01:	0f 0b                	ud2    
+
+0000000000003c03 <<&T as core::convert::AsRef<U>>::as_ref>:
+    3c03:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3c06:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3c0a:	48 89 c7             	mov    rdi,rax
+    3c0d:	ff 25 25 53 00 00    	jmp    QWORD PTR [rip+0x5325]        # 8f38 <<std::path::Path as core::convert::AsRef<std::path::Path>>::as_ref>
+
+0000000000003c13 <std::fs::File::open>:
+    3c13:	41 57                	push   r15
+    3c15:	41 56                	push   r14
+    3c17:	41 54                	push   r12
+    3c19:	53                   	push   rbx
+    3c1a:	48 83 ec 28          	sub    rsp,0x28
+    3c1e:	49 89 d6             	mov    r14,rdx
+    3c21:	49 89 f7             	mov    r15,rsi
+    3c24:	48 89 fb             	mov    rbx,rdi
+    3c27:	4c 8d 64 24 08       	lea    r12,[rsp+0x8]
+    3c2c:	4c 89 e7             	mov    rdi,r12
+    3c2f:	ff 15 ab 53 00 00    	call   QWORD PTR [rip+0x53ab]        # 8fe0 <std::fs::OpenOptions::new>
+    3c35:	6a 01                	push   0x1
+    3c37:	5e                   	pop    rsi
+    3c38:	4c 89 e7             	mov    rdi,r12
+    3c3b:	ff 15 ff 52 00 00    	call   QWORD PTR [rip+0x52ff]        # 8f40 <std::fs::OpenOptions::read>
+    3c41:	49 89 c4             	mov    r12,rax
+    3c44:	48 8d 7c 24 18       	lea    rdi,[rsp+0x18]
+    3c49:	4c 89 3f             	mov    QWORD PTR [rdi],r15
+    3c4c:	4c 89 77 08          	mov    QWORD PTR [rdi+0x8],r14
+    3c50:	e8 ae ff ff ff       	call   3c03 <<&T as core::convert::AsRef<U>>::as_ref>
+    3c55:	48 89 d1             	mov    rcx,rdx
+    3c58:	48 89 df             	mov    rdi,rbx
+    3c5b:	4c 89 e6             	mov    rsi,r12
+    3c5e:	48 89 c2             	mov    rdx,rax
+    3c61:	ff 15 61 53 00 00    	call   QWORD PTR [rip+0x5361]        # 8fc8 <std::fs::OpenOptions::_open>
+    3c67:	48 89 d8             	mov    rax,rbx
+    3c6a:	48 83 c4 28          	add    rsp,0x28
+    3c6e:	5b                   	pop    rbx
+    3c6f:	41 5c                	pop    r12
+    3c71:	41 5e                	pop    r14
+    3c73:	41 5f                	pop    r15
+    3c75:	c3                   	ret    
+
+0000000000003c76 <std::error::Error::cause>:
+    3c76:	31 c0                	xor    eax,eax
+    3c78:	c3                   	ret    
+
+0000000000003c79 <std::error::Error::source>:
+    3c79:	31 c0                	xor    eax,eax
+    3c7b:	c3                   	ret    
+
+0000000000003c7c <std::error::Error::type_id>:
+    3c7c:	48 b8 33 b4 11 f2 85 	movabs rax,0x850c1c85f211b433
+    3c83:	1c 0c 85 
+    3c86:	c3                   	ret    
+
+0000000000003c87 <std::error::Error::backtrace>:
+    3c87:	31 c0                	xor    eax,eax
+    3c89:	c3                   	ret    
+
+0000000000003c8a <core::str::<impl str>::ends_with>:
+    3c8a:	50                   	push   rax
+    3c8b:	83 64 24 04 00       	and    DWORD PTR [rsp+0x4],0x0
+    3c90:	81 fa 80 00 00 00    	cmp    edx,0x80
+    3c96:	73 0c                	jae    3ca4 <core::str::<impl str>::ends_with+0x1a>
+    3c98:	88 54 24 04          	mov    BYTE PTR [rsp+0x4],dl
+    3c9c:	6a 01                	push   0x1
+    3c9e:	59                   	pop    rcx
+    3c9f:	e9 8a 00 00 00       	jmp    3d2e <core::str::<impl str>::ends_with+0xa4>
+    3ca4:	89 d0                	mov    eax,edx
+    3ca6:	81 fa 00 08 00 00    	cmp    edx,0x800
+    3cac:	73 18                	jae    3cc6 <core::str::<impl str>::ends_with+0x3c>
+    3cae:	c1 e8 06             	shr    eax,0x6
+    3cb1:	0c c0                	or     al,0xc0
+    3cb3:	88 44 24 04          	mov    BYTE PTR [rsp+0x4],al
+    3cb7:	80 e2 3f             	and    dl,0x3f
+    3cba:	80 ca 80             	or     dl,0x80
+    3cbd:	88 54 24 05          	mov    BYTE PTR [rsp+0x5],dl
+    3cc1:	6a 02                	push   0x2
+    3cc3:	59                   	pop    rcx
+    3cc4:	eb 68                	jmp    3d2e <core::str::<impl str>::ends_with+0xa4>
+    3cc6:	81 fa 00 00 01 00    	cmp    edx,0x10000
+    3ccc:	73 2a                	jae    3cf8 <core::str::<impl str>::ends_with+0x6e>
+    3cce:	c1 e8 0c             	shr    eax,0xc
+    3cd1:	0c e0                	or     al,0xe0
+    3cd3:	88 44 24 04          	mov    BYTE PTR [rsp+0x4],al
+    3cd7:	89 d0                	mov    eax,edx
+    3cd9:	c1 e8 06             	shr    eax,0x6
+    3cdc:	41 b0 3f             	mov    r8b,0x3f
+    3cdf:	44 20 c0             	and    al,r8b
+    3ce2:	b1 80                	mov    cl,0x80
+    3ce4:	08 c8                	or     al,cl
+    3ce6:	88 44 24 05          	mov    BYTE PTR [rsp+0x5],al
+    3cea:	44 20 c2             	and    dl,r8b
+    3ced:	08 ca                	or     dl,cl
+    3cef:	88 54 24 06          	mov    BYTE PTR [rsp+0x6],dl
+    3cf3:	6a 03                	push   0x3
+    3cf5:	59                   	pop    rcx
+    3cf6:	eb 36                	jmp    3d2e <core::str::<impl str>::ends_with+0xa4>
+    3cf8:	c1 e8 12             	shr    eax,0x12
+    3cfb:	0c f0                	or     al,0xf0
+    3cfd:	88 44 24 04          	mov    BYTE PTR [rsp+0x4],al
+    3d01:	89 d0                	mov    eax,edx
+    3d03:	c1 e8 0c             	shr    eax,0xc
+    3d06:	41 b0 3f             	mov    r8b,0x3f
+    3d09:	44 20 c0             	and    al,r8b
+    3d0c:	b1 80                	mov    cl,0x80
+    3d0e:	08 c8                	or     al,cl
+    3d10:	88 44 24 05          	mov    BYTE PTR [rsp+0x5],al
+    3d14:	89 d0                	mov    eax,edx
+    3d16:	c1 e8 06             	shr    eax,0x6
+    3d19:	44 20 c0             	and    al,r8b
+    3d1c:	08 c8                	or     al,cl
+    3d1e:	88 44 24 06          	mov    BYTE PTR [rsp+0x6],al
+    3d22:	44 20 c2             	and    dl,r8b
+    3d25:	08 ca                	or     dl,cl
+    3d27:	88 54 24 07          	mov    BYTE PTR [rsp+0x7],dl
+    3d2b:	6a 04                	push   0x4
+    3d2d:	59                   	pop    rcx
+    3d2e:	48 8d 54 24 04       	lea    rdx,[rsp+0x4]
+    3d33:	e8 8b 0d 00 00       	call   4ac3 <core::slice::<impl [T]>::ends_with>
+    3d38:	59                   	pop    rcx
+    3d39:	c3                   	ret    
+
+0000000000003d3a <std::io::error::Error::new>:
+    3d3a:	55                   	push   rbp
+    3d3b:	53                   	push   rbx
+    3d3c:	50                   	push   rax
+    3d3d:	89 f5                	mov    ebp,esi
+    3d3f:	48 89 fb             	mov    rbx,rdi
+    3d42:	48 89 d7             	mov    rdi,rdx
+    3d45:	48 89 ce             	mov    rsi,rcx
+    3d48:	e8 99 00 00 00       	call   3de6 <<T as core::convert::Into<U>>::into>
+    3d4d:	48 89 d1             	mov    rcx,rdx
+    3d50:	48 89 df             	mov    rdi,rbx
+    3d53:	89 ee                	mov    esi,ebp
+    3d55:	48 89 c2             	mov    rdx,rax
+    3d58:	ff 15 62 52 00 00    	call   QWORD PTR [rip+0x5262]        # 8fc0 <std::io::error::Error::_new>
+    3d5e:	48 89 d8             	mov    rax,rbx
+    3d61:	48 83 c4 08          	add    rsp,0x8
+    3d65:	5b                   	pop    rbx
+    3d66:	5d                   	pop    rbp
+    3d67:	c3                   	ret    
+
+0000000000003d68 <std::io::error::Error::new>:
+    3d68:	55                   	push   rbp
+    3d69:	53                   	push   rbx
+    3d6a:	50                   	push   rax
+    3d6b:	89 f5                	mov    ebp,esi
+    3d6d:	48 89 fb             	mov    rbx,rdi
+    3d70:	89 d7                	mov    edi,edx
+    3d72:	e8 5f fe ff ff       	call   3bd6 <<T as core::convert::Into<U>>::into>
+    3d77:	48 89 d1             	mov    rcx,rdx
+    3d7a:	48 89 df             	mov    rdi,rbx
+    3d7d:	89 ee                	mov    esi,ebp
+    3d7f:	48 89 c2             	mov    rdx,rax
+    3d82:	ff 15 38 52 00 00    	call   QWORD PTR [rip+0x5238]        # 8fc0 <std::io::error::Error::_new>
+    3d88:	48 89 d8             	mov    rax,rbx
+    3d8b:	48 83 c4 08          	add    rsp,0x8
+    3d8f:	5b                   	pop    rbx
+    3d90:	5d                   	pop    rbp
+    3d91:	c3                   	ret    
+
+0000000000003d92 <std::rt::lang_start>:
+    3d92:	50                   	push   rax
+    3d93:	48 89 d1             	mov    rcx,rdx
+    3d96:	48 89 f2             	mov    rdx,rsi
+    3d99:	48 89 e0             	mov    rax,rsp
+    3d9c:	48 89 38             	mov    QWORD PTR [rax],rdi
+    3d9f:	48 8d 35 e2 4c 00 00 	lea    rsi,[rip+0x4ce2]        # 8a88 <anon.d7cf557ec17f266e412ece827823319f.0.llvm.8026502120264270733>
+    3da6:	48 89 c7             	mov    rdi,rax
+    3da9:	ff 15 b1 51 00 00    	call   QWORD PTR [rip+0x51b1]        # 8f60 <std::rt::lang_start_internal>
+    3daf:	59                   	pop    rcx
+    3db0:	c3                   	ret    
+
+0000000000003db1 <std::rt::lang_start::{{closure}}>:
+    3db1:	53                   	push   rbx
+    3db2:	48 83 ec 10          	sub    rsp,0x10
+    3db6:	48 89 f8             	mov    rax,rdi
+    3db9:	48 89 e3             	mov    rbx,rsp
+    3dbc:	48 89 df             	mov    rdi,rbx
+    3dbf:	ff 10                	call   QWORD PTR [rax]
+    3dc1:	48 89 df             	mov    rdi,rbx
+    3dc4:	e8 66 12 00 00       	call   502f <<core::result::Result<(),E> as std::process::Termination>::report>
+    3dc9:	48 83 c4 10          	add    rsp,0x10
+    3dcd:	5b                   	pop    rbx
+    3dce:	c3                   	ret    
+
+0000000000003dcf <core::ops::function::FnOnce::call_once{{vtable-shim}}>:
+    3dcf:	50                   	push   rax
+    3dd0:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3dd3:	48 89 e7             	mov    rdi,rsp
+    3dd6:	48 89 07             	mov    QWORD PTR [rdi],rax
+    3dd9:	e8 d3 ff ff ff       	call   3db1 <std::rt::lang_start::{{closure}}>
+    3dde:	59                   	pop    rcx
+    3ddf:	c3                   	ret    
+
+0000000000003de0 <core::ptr::drop_in_place>:
+    3de0:	c3                   	ret    
+
+0000000000003de1 <core::ptr::drop_in_place>:
+    3de1:	e9 32 f8 ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000003de6 <<T as core::convert::Into<U>>::into>:
+    3de6:	53                   	push   rbx
+    3de7:	48 83 ec 30          	sub    rsp,0x30
+    3deb:	48 89 f2             	mov    rdx,rsi
+    3dee:	48 89 fe             	mov    rsi,rdi
+    3df1:	48 8d 5c 24 18       	lea    rbx,[rsp+0x18]
+    3df6:	48 89 df             	mov    rdi,rbx
+    3df9:	e8 1f fd ff ff       	call   3b1d <alloc::slice::<impl alloc::borrow::ToOwned for [T]>::to_owned>
+    3dfe:	48 8b 43 10          	mov    rax,QWORD PTR [rbx+0x10]
+    3e02:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+    3e07:	0f 10 03             	movups xmm0,XMMWORD PTR [rbx]
+    3e0a:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+    3e0e:	6a 18                	push   0x18
+    3e10:	5f                   	pop    rdi
+    3e11:	6a 08                	push   0x8
+    3e13:	5e                   	pop    rsi
+    3e14:	ff 15 c6 50 00 00    	call   QWORD PTR [rip+0x50c6]        # 8ee0 <__rust_alloc>
+    3e1a:	48 85 c0             	test   rax,rax
+    3e1d:	74 1d                	je     3e3c <<T as core::convert::Into<U>>::into+0x56>
+    3e1f:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+    3e24:	48 89 48 10          	mov    QWORD PTR [rax+0x10],rcx
+    3e28:	0f 28 04 24          	movaps xmm0,XMMWORD PTR [rsp]
+    3e2c:	0f 11 00             	movups XMMWORD PTR [rax],xmm0
+    3e2f:	48 8d 15 82 4c 00 00 	lea    rdx,[rip+0x4c82]        # 8ab8 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733>
+    3e36:	48 83 c4 30          	add    rsp,0x30
+    3e3a:	5b                   	pop    rbx
+    3e3b:	c3                   	ret    
+    3e3c:	6a 18                	push   0x18
+    3e3e:	5f                   	pop    rdi
+    3e3f:	6a 08                	push   0x8
+    3e41:	5e                   	pop    rsi
+    3e42:	ff 15 58 50 00 00    	call   QWORD PTR [rip+0x5058]        # 8ea0 <alloc::alloc::handle_alloc_error>
+    3e48:	0f 0b                	ud2    
+
+0000000000003e4a <_ZN4core3ptr13drop_in_place17h265bae7ea17f4ec3E.llvm.6057702612162597698>:
+    3e4a:	e9 c9 f7 ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000003e4f <core::ptr::drop_in_place>:
+    3e4f:	41 56                	push   r14
+    3e51:	53                   	push   rbx
+    3e52:	50                   	push   rax
+    3e53:	48 89 fb             	mov    rbx,rdi
+    3e56:	48 83 c7 20          	add    rdi,0x20
+    3e5a:	ff 15 68 50 00 00    	call   QWORD PTR [rip+0x5068]        # 8ec8 <<std::sys::unix::fd::FileDesc as core::ops::drop::Drop>::drop>
+    3e60:	48 89 df             	mov    rdi,rbx
+    3e63:	48 83 c4 08          	add    rsp,0x8
+    3e67:	5b                   	pop    rbx
+    3e68:	41 5e                	pop    r14
+    3e6a:	e9 1a 00 00 00       	jmp    3e89 <core::ptr::drop_in_place>
+    3e6f:	49 89 c6             	mov    r14,rax
+    3e72:	48 89 df             	mov    rdi,rbx
+    3e75:	e8 0f 00 00 00       	call   3e89 <core::ptr::drop_in_place>
+    3e7a:	4c 89 f7             	mov    rdi,r14
+    3e7d:	e8 ae f1 ff ff       	call   3030 <_Unwind_Resume@plt>
+    3e82:	0f 0b                	ud2    
+
+0000000000003e84 <core::ptr::drop_in_place>:
+    3e84:	e9 76 f7 ff ff       	jmp    35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000003e89 <core::ptr::drop_in_place>:
+    3e89:	48 8b 77 08          	mov    rsi,QWORD PTR [rdi+0x8]
+    3e8d:	48 85 f6             	test   rsi,rsi
+    3e90:	74 0c                	je     3e9e <core::ptr::drop_in_place+0x15>
+    3e92:	48 8b 3f             	mov    rdi,QWORD PTR [rdi]
+    3e95:	6a 01                	push   0x1
+    3e97:	5a                   	pop    rdx
+    3e98:	ff 25 52 50 00 00    	jmp    QWORD PTR [rip+0x5052]        # 8ef0 <__rust_dealloc>
+    3e9e:	c3                   	ret    
+
+0000000000003e9f <alloc::vec::Vec<T>::into_boxed_slice>:
+    3e9f:	41 56                	push   r14
+    3ea1:	53                   	push   rbx
+    3ea2:	50                   	push   rax
+    3ea3:	48 89 fb             	mov    rbx,rdi
+    3ea6:	48 8b 57 08          	mov    rdx,QWORD PTR [rdi+0x8]
+    3eaa:	48 8b 77 10          	mov    rsi,QWORD PTR [rdi+0x10]
+    3eae:	48 39 f2             	cmp    rdx,rsi
+    3eb1:	74 0c                	je     3ebf <alloc::vec::Vec<T>::into_boxed_slice+0x20>
+    3eb3:	48 89 df             	mov    rdi,rbx
+    3eb6:	e8 6c f4 ff ff       	call   3327 <alloc::raw_vec::RawVec<T,A>::shrink_to_fit>
+    3ebb:	48 8b 53 10          	mov    rdx,QWORD PTR [rbx+0x10]
+    3ebf:	48 8b 03             	mov    rax,QWORD PTR [rbx]
+    3ec2:	48 83 c4 08          	add    rsp,0x8
+    3ec6:	5b                   	pop    rbx
+    3ec7:	41 5e                	pop    r14
+    3ec9:	c3                   	ret    
+    3eca:	49 89 c6             	mov    r14,rax
+    3ecd:	48 89 df             	mov    rdi,rbx
+    3ed0:	e8 75 ff ff ff       	call   3e4a <_ZN4core3ptr13drop_in_place17h265bae7ea17f4ec3E.llvm.6057702612162597698>
+    3ed5:	4c 89 f7             	mov    rdi,r14
+    3ed8:	e8 53 f1 ff ff       	call   3030 <_Unwind_Resume@plt>
+    3edd:	0f 0b                	ud2    
+
+0000000000003edf <alloc::vec::Vec<T>::extend_from_slice>:
+    3edf:	41 57                	push   r15
+    3ee1:	41 56                	push   r14
+    3ee3:	41 54                	push   r12
+    3ee5:	53                   	push   rbx
+    3ee6:	50                   	push   rax
+    3ee7:	49 89 d7             	mov    r15,rdx
+    3eea:	49 89 f6             	mov    r14,rsi
+    3eed:	48 89 fb             	mov    rbx,rdi
+    3ef0:	48 8b 77 10          	mov    rsi,QWORD PTR [rdi+0x10]
+    3ef4:	e8 58 f5 ff ff       	call   3451 <alloc::raw_vec::RawVec<T,A>::reserve>
+    3ef9:	4c 8b 63 10          	mov    r12,QWORD PTR [rbx+0x10]
+    3efd:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    3f00:	4c 01 e7             	add    rdi,r12
+    3f03:	4c 89 fe             	mov    rsi,r15
+    3f06:	4c 89 f2             	mov    rdx,r14
+    3f09:	4c 89 f9             	mov    rcx,r15
+    3f0c:	e8 e1 0a 00 00       	call   49f2 <core::slice::<impl [T]>::copy_from_slice>
+    3f11:	4d 01 fc             	add    r12,r15
+    3f14:	4c 89 63 10          	mov    QWORD PTR [rbx+0x10],r12
+    3f18:	48 83 c4 08          	add    rsp,0x8
+    3f1c:	5b                   	pop    rbx
+    3f1d:	41 5c                	pop    r12
+    3f1f:	41 5e                	pop    r14
+    3f21:	41 5f                	pop    r15
+    3f23:	c3                   	ret    
+
+0000000000003f24 <alloc::vec::Vec<T>::remove>:
+    3f24:	41 57                	push   r15
+    3f26:	41 56                	push   r14
+    3f28:	41 54                	push   r12
+    3f2a:	53                   	push   rbx
+    3f2b:	50                   	push   rax
+    3f2c:	48 89 f2             	mov    rdx,rsi
+    3f2f:	48 8b 5f 10          	mov    rbx,QWORD PTR [rdi+0x10]
+    3f33:	48 39 f3             	cmp    rbx,rsi
+    3f36:	76 4a                	jbe    3f82 <alloc::vec::Vec<T>::remove+0x5e>
+    3f38:	49 89 fe             	mov    r14,rdi
+    3f3b:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+    3f3e:	48 89 d1             	mov    rcx,rdx
+    3f41:	48 c1 e1 04          	shl    rcx,0x4
+    3f45:	48 8d 3c 08          	lea    rdi,[rax+rcx*1]
+    3f49:	48 8d 34 08          	lea    rsi,[rax+rcx*1]
+    3f4d:	48 83 c6 10          	add    rsi,0x10
+    3f51:	4c 8b 7e f0          	mov    r15,QWORD PTR [rsi-0x10]
+    3f55:	4c 8b 66 f8          	mov    r12,QWORD PTR [rsi-0x8]
+    3f59:	48 f7 d2             	not    rdx
+    3f5c:	48 01 da             	add    rdx,rbx
+    3f5f:	48 c1 e2 04          	shl    rdx,0x4
+    3f63:	ff 15 1f 50 00 00    	call   QWORD PTR [rip+0x501f]        # 8f88 <memmove@GLIBC_2.2.5>
+    3f69:	48 ff cb             	dec    rbx
+    3f6c:	49 89 5e 10          	mov    QWORD PTR [r14+0x10],rbx
+    3f70:	4c 89 f8             	mov    rax,r15
+    3f73:	4c 89 e2             	mov    rdx,r12
+    3f76:	48 83 c4 08          	add    rsp,0x8
+    3f7a:	5b                   	pop    rbx
+    3f7b:	41 5c                	pop    r12
+    3f7d:	41 5e                	pop    r14
+    3f7f:	41 5f                	pop    r15
+    3f81:	c3                   	ret    
+    3f82:	48 89 d7             	mov    rdi,rdx
+    3f85:	48 89 de             	mov    rsi,rbx
+    3f88:	ff 15 02 50 00 00    	call   QWORD PTR [rip+0x5002]        # 8f90 <alloc::vec::Vec<T>::remove::assert_failed>
+    3f8e:	0f 0b                	ud2    
+
+0000000000003f90 <alloc::vec::Vec<T>::reserve>:
+    3f90:	48 89 f2             	mov    rdx,rsi
+    3f93:	48 8b 77 10          	mov    rsi,QWORD PTR [rdi+0x10]
+    3f97:	e9 5a f5 ff ff       	jmp    34f6 <alloc::raw_vec::RawVec<T,A>::reserve>
+
+0000000000003f9c <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter>:
+    3f9c:	55                   	push   rbp
+    3f9d:	41 57                	push   r15
+    3f9f:	41 56                	push   r14
+    3fa1:	41 55                	push   r13
+    3fa3:	41 54                	push   r12
+    3fa5:	53                   	push   rbx
+    3fa6:	48 83 ec 58          	sub    rsp,0x58
+    3faa:	49 89 f7             	mov    r15,rsi
+    3fad:	48 89 fb             	mov    rbx,rdi
+    3fb0:	48 89 f7             	mov    rdi,rsi
+    3fb3:	e8 fe 0c 00 00       	call   4cb6 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next>
+    3fb8:	48 85 c0             	test   rax,rax
+    3fbb:	0f 84 ac 00 00 00    	je     406d <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0xd1>
+    3fc1:	48 89 d5             	mov    rbp,rdx
+    3fc4:	48 89 5c 24 18       	mov    QWORD PTR [rsp+0x18],rbx
+    3fc9:	6a 01                	push   0x1
+    3fcb:	41 5c                	pop    r12
+    3fcd:	4c 89 e7             	mov    rdi,r12
+    3fd0:	31 f6                	xor    esi,esi
+    3fd2:	e8 88 f2 ff ff       	call   325f <alloc::raw_vec::RawVec<T,A>::allocate_in>
+    3fd7:	48 89 c3             	mov    rbx,rax
+    3fda:	48 89 28             	mov    QWORD PTR [rax],rbp
+    3fdd:	49 89 e5             	mov    r13,rsp
+    3fe0:	49 89 45 00          	mov    QWORD PTR [r13+0x0],rax
+    3fe4:	49 89 55 08          	mov    QWORD PTR [r13+0x8],rdx
+    3fe8:	49 c7 45 10 01 00 00 	mov    QWORD PTR [r13+0x10],0x1
+    3fef:	00 
+    3ff0:	41 0f 10 07          	movups xmm0,XMMWORD PTR [r15]
+    3ff4:	41 0f 10 4f 10       	movups xmm1,XMMWORD PTR [r15+0x10]
+    3ff9:	41 0f 10 57 20       	movups xmm2,XMMWORD PTR [r15+0x20]
+    3ffe:	4c 8d 7c 24 20       	lea    r15,[rsp+0x20]
+    4003:	41 0f 29 57 20       	movaps XMMWORD PTR [r15+0x20],xmm2
+    4008:	41 0f 29 4f 10       	movaps XMMWORD PTR [r15+0x10],xmm1
+    400d:	41 0f 29 07          	movaps XMMWORD PTR [r15],xmm0
+    4011:	4c 89 e5             	mov    rbp,r12
+    4014:	4c 89 ff             	mov    rdi,r15
+    4017:	e8 9a 0c 00 00       	call   4cb6 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next>
+    401c:	48 83 f8 01          	cmp    rax,0x1
+    4020:	75 2a                	jne    404c <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0xb0>
+    4022:	49 89 d6             	mov    r14,rdx
+    4025:	48 3b 6c 24 08       	cmp    rbp,QWORD PTR [rsp+0x8]
+    402a:	75 12                	jne    403e <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0xa2>
+    402c:	4c 89 ef             	mov    rdi,r13
+    402f:	48 89 ee             	mov    rsi,rbp
+    4032:	4c 89 e2             	mov    rdx,r12
+    4035:	e8 6a f3 ff ff       	call   33a4 <alloc::raw_vec::RawVec<T,A>::reserve>
+    403a:	48 8b 1c 24          	mov    rbx,QWORD PTR [rsp]
+    403e:	4c 89 34 eb          	mov    QWORD PTR [rbx+rbp*8],r14
+    4042:	48 ff c5             	inc    rbp
+    4045:	48 89 6c 24 10       	mov    QWORD PTR [rsp+0x10],rbp
+    404a:	eb c8                	jmp    4014 <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0x78>
+    404c:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    4051:	e8 f9 fd ff ff       	call   3e4f <core::ptr::drop_in_place>
+    4056:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
+    405b:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+    4060:	48 89 48 10          	mov    QWORD PTR [rax+0x10],rcx
+    4064:	0f 10 04 24          	movups xmm0,XMMWORD PTR [rsp]
+    4068:	0f 11 00             	movups XMMWORD PTR [rax],xmm0
+    406b:	eb 19                	jmp    4086 <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0xea>
+    406d:	48 c7 03 08 00 00 00 	mov    QWORD PTR [rbx],0x8
+    4074:	0f 57 c0             	xorps  xmm0,xmm0
+    4077:	0f 11 43 08          	movups XMMWORD PTR [rbx+0x8],xmm0
+    407b:	4c 89 ff             	mov    rdi,r15
+    407e:	e8 cc fd ff ff       	call   3e4f <core::ptr::drop_in_place>
+    4083:	48 89 d8             	mov    rax,rbx
+    4086:	48 83 c4 58          	add    rsp,0x58
+    408a:	5b                   	pop    rbx
+    408b:	41 5c                	pop    r12
+    408d:	41 5d                	pop    r13
+    408f:	41 5e                	pop    r14
+    4091:	41 5f                	pop    r15
+    4093:	5d                   	pop    rbp
+    4094:	c3                   	ret    
+    4095:	eb 00                	jmp    4097 <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0xfb>
+    4097:	48 89 c3             	mov    rbx,rax
+    409a:	4c 89 ff             	mov    rdi,r15
+    409d:	e8 ad fd ff ff       	call   3e4f <core::ptr::drop_in_place>
+    40a2:	eb 17                	jmp    40bb <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0x11f>
+    40a4:	eb 00                	jmp    40a6 <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0x10a>
+    40a6:	48 89 c3             	mov    rbx,rax
+    40a9:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    40ae:	e8 9c fd ff ff       	call   3e4f <core::ptr::drop_in_place>
+    40b3:	48 89 e7             	mov    rdi,rsp
+    40b6:	e8 c9 fd ff ff       	call   3e84 <core::ptr::drop_in_place>
+    40bb:	48 89 df             	mov    rdi,rbx
+    40be:	e8 6d ef ff ff       	call   3030 <_Unwind_Resume@plt>
+    40c3:	0f 0b                	ud2    
+    40c5:	48 89 c3             	mov    rbx,rax
+    40c8:	eb e9                	jmp    40b3 <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter+0x117>
+
+00000000000040ca <core::ptr::drop_in_place>:
+    40ca:	41 57                	push   r15
+    40cc:	41 56                	push   r14
+    40ce:	53                   	push   rbx
+    40cf:	48 83 3f 00          	cmp    QWORD PTR [rdi],0x0
+    40d3:	74 09                	je     40de <core::ptr::drop_in_place+0x14>
+    40d5:	48 89 fb             	mov    rbx,rdi
+    40d8:	80 7f 08 02          	cmp    BYTE PTR [rdi+0x8],0x2
+    40dc:	73 06                	jae    40e4 <core::ptr::drop_in_place+0x1a>
+    40de:	5b                   	pop    rbx
+    40df:	41 5e                	pop    r14
+    40e1:	41 5f                	pop    r15
+    40e3:	c3                   	ret    
+    40e4:	4c 8b 7b 10          	mov    r15,QWORD PTR [rbx+0x10]
+    40e8:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    40eb:	49 8b 47 08          	mov    rax,QWORD PTR [r15+0x8]
+    40ef:	ff 10                	call   QWORD PTR [rax]
+    40f1:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    40f4:	49 8b 77 08          	mov    rsi,QWORD PTR [r15+0x8]
+    40f8:	e8 41 00 00 00       	call   413e <alloc::alloc::box_free>
+    40fd:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+    4101:	5b                   	pop    rbx
+    4102:	41 5e                	pop    r14
+    4104:	41 5f                	pop    r15
+    4106:	e9 27 00 00 00       	jmp    4132 <alloc::alloc::box_free>
+    410b:	49 89 c6             	mov    r14,rax
+    410e:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    4111:	49 8b 77 08          	mov    rsi,QWORD PTR [r15+0x8]
+    4115:	e8 24 00 00 00       	call   413e <alloc::alloc::box_free>
+    411a:	48 8b 7b 10          	mov    rdi,QWORD PTR [rbx+0x10]
+    411e:	e8 0f 00 00 00       	call   4132 <alloc::alloc::box_free>
+    4123:	4c 89 f7             	mov    rdi,r14
+    4126:	e8 05 ef ff ff       	call   3030 <_Unwind_Resume@plt>
+    412b:	0f 0b                	ud2    
+
+000000000000412d <core::ptr::drop_in_place>:
+    412d:	e9 cd f4 ff ff       	jmp    35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000004132 <alloc::alloc::box_free>:
+    4132:	6a 18                	push   0x18
+    4134:	5e                   	pop    rsi
+    4135:	6a 08                	push   0x8
+    4137:	5a                   	pop    rdx
+    4138:	ff 25 b2 4d 00 00    	jmp    QWORD PTR [rip+0x4db2]        # 8ef0 <__rust_dealloc>
+
+000000000000413e <alloc::alloc::box_free>:
+    413e:	48 8b 46 08          	mov    rax,QWORD PTR [rsi+0x8]
+    4142:	48 8b 56 10          	mov    rdx,QWORD PTR [rsi+0x10]
+    4146:	48 89 c6             	mov    rsi,rax
+    4149:	e9 00 00 00 00       	jmp    414e <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>
+
+000000000000414e <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>:
+    414e:	48 85 f6             	test   rsi,rsi
+    4151:	74 06                	je     4159 <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc+0xb>
+    4153:	ff 25 97 4d 00 00    	jmp    QWORD PTR [rip+0x4d97]        # 8ef0 <__rust_dealloc>
+    4159:	c3                   	ret    
+
+000000000000415a <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>:
+    415a:	50                   	push   rax
+    415b:	48 89 f0             	mov    rax,rsi
+    415e:	48 8b 77 10          	mov    rsi,QWORD PTR [rdi+0x10]
+    4162:	48 39 c6             	cmp    rsi,rax
+    4165:	76 09                	jbe    4170 <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index+0x16>
+    4167:	48 c1 e0 03          	shl    rax,0x3
+    416b:	48 03 07             	add    rax,QWORD PTR [rdi]
+    416e:	59                   	pop    rcx
+    416f:	c3                   	ret    
+    4170:	48 89 c7             	mov    rdi,rax
+    4173:	ff 15 97 4d 00 00    	call   QWORD PTR [rip+0x4d97]        # 8f10 <core::panicking::panic_bounds_check>
+    4179:	0f 0b                	ud2    
+
+000000000000417b <main::part1>:
+                )
+            )
+        .collect()
+}
+
+fn part1(vec : &Vec<u64>, target : u64) -> Result<u64, Error> {
+    417b:	55                   	push   rbp
+    417c:	41 57                	push   r15
+    417e:	41 56                	push   r14
+    4180:	41 55                	push   r13
+    4182:	41 54                	push   r12
+    4184:	53                   	push   rbx
+    4185:	48 83 ec 18          	sub    rsp,0x18
+    4189:	49 89 d4             	mov    r12,rdx
+    418c:	49 89 f7             	mov    r15,rsi
+    418f:	48 89 3c 24          	mov    QWORD PTR [rsp],rdi
+    4193:	4c 8b 6e 10          	mov    r13,QWORD PTR [rsi+0x10]
+    let (mut tail, mut head) : (usize, usize) = (0, vec.len() - 1);
+    4197:	49 ff cd             	dec    r13
+    419a:	31 db                	xor    ebx,ebx
+    419c:	4c 8d 35 7d 49 00 00 	lea    r14,[rip+0x497d]        # 8b20 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0x68>
+
+    while tail < head {
+    41a3:	4c 39 eb             	cmp    rbx,r13
+    41a6:	73 37                	jae    41df <main::part1+0x64>
+        let sum = vec[tail] + vec[head];
+    41a8:	4c 89 ff             	mov    rdi,r15
+    41ab:	48 89 de             	mov    rsi,rbx
+    41ae:	48 8d 15 53 49 00 00 	lea    rdx,[rip+0x4953]        # 8b08 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0x50>
+    41b5:	e8 a0 ff ff ff       	call   415a <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    41ba:	48 8b 28             	mov    rbp,QWORD PTR [rax]
+    41bd:	4c 89 ff             	mov    rdi,r15
+    41c0:	4c 89 ee             	mov    rsi,r13
+    41c3:	4c 89 f2             	mov    rdx,r14
+    41c6:	e8 8f ff ff ff       	call   415a <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    41cb:	48 03 28             	add    rbp,QWORD PTR [rax]
+        
+        if sum > target { head -= 1; continue; }
+    41ce:	4c 39 e5             	cmp    rbp,r12
+    41d1:	77 07                	ja     41da <main::part1+0x5f>
+        if sum < target { tail += 1; continue; }
+    41d3:	73 37                	jae    420c <main::part1+0x91>
+    41d5:	48 ff c3             	inc    rbx
+    41d8:	eb c9                	jmp    41a3 <main::part1+0x28>
+        if sum > target { head -= 1; continue; }
+    41da:	49 ff cd             	dec    r13
+    41dd:	eb c4                	jmp    41a3 <main::part1+0x28>
+
+        return Ok(vec[tail] * vec[head]);
+    }
+
+    Err(Error::new(ErrorKind::NotFound, "Solution not found"))
+    41df:	48 8d 15 49 1f 00 00 	lea    rdx,[rip+0x1f49]        # 612f <anon.4edb19371b067e507ce45a8c53a011f9.4.llvm.8423637217147767627+0xb9>
+    41e6:	48 8d 5c 24 08       	lea    rbx,[rsp+0x8]
+    41eb:	6a 12                	push   0x12
+    41ed:	59                   	pop    rcx
+    41ee:	48 89 df             	mov    rdi,rbx
+    41f1:	31 f6                	xor    esi,esi
+    41f3:	e8 42 fb ff ff       	call   3d3a <std::io::error::Error::new>
+    41f8:	0f 10 03             	movups xmm0,XMMWORD PTR [rbx]
+    41fb:	48 8b 04 24          	mov    rax,QWORD PTR [rsp]
+    41ff:	0f 11 40 08          	movups XMMWORD PTR [rax+0x8],xmm0
+    4203:	48 c7 00 01 00 00 00 	mov    QWORD PTR [rax],0x1
+    420a:	eb 37                	jmp    4243 <main::part1+0xc8>
+        return Ok(vec[tail] * vec[head]);
+    420c:	48 8d 15 25 49 00 00 	lea    rdx,[rip+0x4925]        # 8b38 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0x80>
+    4213:	4c 89 ff             	mov    rdi,r15
+    4216:	48 89 de             	mov    rsi,rbx
+    4219:	e8 3c ff ff ff       	call   415a <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    421e:	48 8b 18             	mov    rbx,QWORD PTR [rax]
+    4221:	48 8d 15 28 49 00 00 	lea    rdx,[rip+0x4928]        # 8b50 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0x98>
+    4228:	4c 89 ff             	mov    rdi,r15
+    422b:	4c 89 ee             	mov    rsi,r13
+    422e:	e8 27 ff ff ff       	call   415a <<alloc::vec::Vec<T> as core::ops::index::Index<I>>::index>
+    4233:	48 0f af 18          	imul   rbx,QWORD PTR [rax]
+    4237:	48 8b 04 24          	mov    rax,QWORD PTR [rsp]
+    423b:	48 89 58 08          	mov    QWORD PTR [rax+0x8],rbx
+    423f:	48 83 20 00          	and    QWORD PTR [rax],0x0
+}
+    4243:	48 83 c4 18          	add    rsp,0x18
+    4247:	5b                   	pop    rbx
+    4248:	41 5c                	pop    r12
+    424a:	41 5d                	pop    r13
+    424c:	41 5e                	pop    r14
+    424e:	41 5f                	pop    r15
+    4250:	5d                   	pop    rbp
+    4251:	c3                   	ret    
+
+0000000000004252 <main::main>:
+    }
+
+    Err(Error::new(ErrorKind::NotFound, "Solution not found"))
+}
+
+fn main() -> Result<(), Error> {
+    4252:	55                   	push   rbp
+    4253:	41 57                	push   r15
+    4255:	41 56                	push   r14
+    4257:	41 55                	push   r13
+    4259:	41 54                	push   r12
+    425b:	53                   	push   rbx
+    425c:	48 81 ec c8 00 00 00 	sub    rsp,0xc8
+    4263:	49 89 fe             	mov    r14,rdi
+    let mut vec : Vec<u64> = read(File::open("input")?)?;
+    4266:	48 8d 35 d4 1e 00 00 	lea    rsi,[rip+0x1ed4]        # 6141 <anon.4edb19371b067e507ce45a8c53a011f9.4.llvm.8423637217147767627+0xcb>
+    426d:	48 8d 9c 24 90 00 00 	lea    rbx,[rsp+0x90]
+    4274:	00 
+    4275:	6a 05                	push   0x5
+    4277:	5a                   	pop    rdx
+    4278:	48 89 df             	mov    rdi,rbx
+    427b:	e8 93 f9 ff ff       	call   3c13 <std::fs::File::open>
+    4280:	8b 03                	mov    eax,DWORD PTR [rbx]
+    4282:	8b 73 04             	mov    esi,DWORD PTR [rbx+0x4]
+    4285:	0f 10 43 08          	movups xmm0,XMMWORD PTR [rbx+0x8]
+    4289:	0f 29 84 24 80 00 00 	movaps XMMWORD PTR [rsp+0x80],xmm0
+    4290:	00 
+    4291:	83 f8 01             	cmp    eax,0x1
+    4294:	75 0a                	jne    42a0 <main::main+0x4e>
+    4296:	0f 28 84 24 80 00 00 	movaps xmm0,XMMWORD PTR [rsp+0x80]
+    429d:	00 
+    429e:	eb 57                	jmp    42f7 <main::main+0xa5>
+    42a0:	48 8d 7c 24 58       	lea    rdi,[rsp+0x58]
+    let br = BufReader::new(io);
+    42a5:	e8 69 08 00 00       	call   4b13 <std::io::buffered::BufReader<R>::new>
+    42aa:	48 8b 44 24 78       	mov    rax,QWORD PTR [rsp+0x78]
+    42af:	48 8d b4 24 90 00 00 	lea    rsi,[rsp+0x90]
+    42b6:	00 
+    42b7:	48 89 46 20          	mov    QWORD PTR [rsi+0x20],rax
+    42bb:	0f 10 44 24 58       	movups xmm0,XMMWORD PTR [rsp+0x58]
+    42c0:	0f 10 4c 24 68       	movups xmm1,XMMWORD PTR [rsp+0x68]
+    42c5:	0f 29 4e 10          	movaps XMMWORD PTR [rsi+0x10],xmm1
+    42c9:	0f 29 06             	movaps XMMWORD PTR [rsi],xmm0
+    42cc:	48 89 e7             	mov    rdi,rsp
+    42cf:	e8 94 0b 00 00       	call   4e68 <core::iter::adapters::process_results>
+    42d4:	48 8b 04 24          	mov    rax,QWORD PTR [rsp]
+    42d8:	0f 10 44 24 08       	movups xmm0,XMMWORD PTR [rsp+0x8]
+    42dd:	0f 29 44 24 20       	movaps XMMWORD PTR [rsp+0x20],xmm0
+    42e2:	48 8b 4c 24 18       	mov    rcx,QWORD PTR [rsp+0x18]
+    42e7:	48 89 4c 24 30       	mov    QWORD PTR [rsp+0x30],rcx
+    let mut vec : Vec<u64> = read(File::open("input")?)?;
+    42ec:	48 83 f8 01          	cmp    rax,0x1
+    42f0:	75 0e                	jne    4300 <main::main+0xae>
+    42f2:	0f 28 44 24 20       	movaps xmm0,XMMWORD PTR [rsp+0x20]
+    42f7:	41 0f 11 06          	movups XMMWORD PTR [r14],xmm0
+    42fb:	e9 c0 01 00 00       	jmp    44c0 <main::main+0x26e>
+    4300:	4c 8b 64 24 30       	mov    r12,QWORD PTR [rsp+0x30]
+    4305:	4c 89 64 24 50       	mov    QWORD PTR [rsp+0x50],r12
+    430a:	0f 28 44 24 20       	movaps xmm0,XMMWORD PTR [rsp+0x20]
+    430f:	0f 29 44 24 40       	movaps XMMWORD PTR [rsp+0x40],xmm0
+    4314:	4c 8b 7c 24 40       	mov    r15,QWORD PTR [rsp+0x40]
+    4319:	4c 89 ff             	mov    rdi,r15
+    431c:	4c 89 e6             	mov    rsi,r12
+    431f:	e8 31 f3 ff ff       	call   3655 <alloc::slice::merge_sort>
+    4324:	48 8d 7c 24 58       	lea    rdi,[rsp+0x58]
+    4329:	48 8d 74 24 40       	lea    rsi,[rsp+0x40]
+    vec.sort();
+
+    println!("solution to 1st part: {}", part1(&vec, 2020)?);
+    432e:	ba e4 07 00 00       	mov    edx,0x7e4
+    4333:	e8 43 fe ff ff       	call   417b <main::part1>
+    4338:	48 8b 44 24 68       	mov    rax,QWORD PTR [rsp+0x68]
+    433d:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+    4342:	0f 10 44 24 58       	movups xmm0,XMMWORD PTR [rsp+0x58]
+    4347:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
+    434b:	83 3c 24 01          	cmp    DWORD PTR [rsp],0x1
+    434f:	0f 84 eb 00 00 00    	je     4440 <main::main+0x1ee>
+    4355:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    435a:	48 8d 8c 24 80 00 00 	lea    rcx,[rsp+0x80]
+    4361:	00 
+    4362:	48 89 01             	mov    QWORD PTR [rcx],rax
+    4365:	48 8d 54 24 20       	lea    rdx,[rsp+0x20]
+    436a:	48 89 0a             	mov    QWORD PTR [rdx],rcx
+    436d:	48 8d 05 f4 47 00 00 	lea    rax,[rip+0x47f4]        # 8b68 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0xb0>
+    4374:	48 8d bc 24 90 00 00 	lea    rdi,[rsp+0x90]
+    437b:	00 
+    437c:	48 89 07             	mov    QWORD PTR [rdi],rax
+    437f:	48 c7 47 08 02 00 00 	mov    QWORD PTR [rdi+0x8],0x2
+    4386:	00 
+    4387:	48 83 67 10 00       	and    QWORD PTR [rdi+0x10],0x0
+    438c:	48 8b 05 75 4b 00 00 	mov    rax,QWORD PTR [rip+0x4b75]        # 8f08 <core::fmt::num::imp::<impl core::fmt::Display for u64>::fmt>
+    4393:	48 89 42 08          	mov    QWORD PTR [rdx+0x8],rax
+    4397:	48 89 57 20          	mov    QWORD PTR [rdi+0x20],rdx
+    439b:	48 c7 47 28 01 00 00 	mov    QWORD PTR [rdi+0x28],0x1
+    43a2:	00 
+    43a3:	ff 15 ef 4a 00 00    	call   QWORD PTR [rip+0x4aef]        # 8e98 <std::io::stdio::_print>
+    43a9:	48 89 e7             	mov    rdi,rsp
+    43ac:	e8 19 fd ff ff       	call   40ca <core::ptr::drop_in_place>
+    for val in vec {
+    43b1:	49 c1 e4 03          	shl    r12,0x3
+    43b5:	31 ed                	xor    ebp,ebp
+    43b7:	48 8d 5c 24 58       	lea    rbx,[rsp+0x58]
+    43bc:	4c 8d 6c 24 40       	lea    r13,[rsp+0x40]
+    43c1:	49 39 ec             	cmp    r12,rbp
+    43c4:	74 2a                	je     43f0 <main::main+0x19e>
+    43c6:	ba e4 07 00 00       	mov    edx,0x7e4
+    43cb:	49 2b 14 2f          	sub    rdx,QWORD PTR [r15+rbp*1]
+        if let Ok(sub_res) = part1(&vec, want) {
+    43cf:	48 89 df             	mov    rdi,rbx
+    43d2:	4c 89 ee             	mov    rsi,r13
+    43d5:	e8 a1 fd ff ff       	call   417b <main::part1>
+    43da:	48 83 7c 24 58 00    	cmp    QWORD PTR [rsp+0x58],0x0
+    43e0:	74 33                	je     4415 <main::main+0x1c3>
+    }
+    43e2:	48 89 df             	mov    rdi,rbx
+    43e5:	e8 e0 fc ff ff       	call   40ca <core::ptr::drop_in_place>
+    for val in vec {
+    43ea:	48 83 c5 08          	add    rbp,0x8
+    43ee:	eb d1                	jmp    43c1 <main::main+0x16f>
+    Err(Error::new(ErrorKind::NotFound, "Solution not found"))
+    43f0:	48 8d 15 38 1d 00 00 	lea    rdx,[rip+0x1d38]        # 612f <anon.4edb19371b067e507ce45a8c53a011f9.4.llvm.8423637217147767627+0xb9>
+    43f7:	48 8d 7c 24 58       	lea    rdi,[rsp+0x58]
+    43fc:	6a 12                	push   0x12
+    43fe:	59                   	pop    rcx
+    43ff:	31 f6                	xor    esi,esi
+    4401:	e8 34 f9 ff ff       	call   3d3a <std::io::error::Error::new>
+    4406:	48 8b 5c 24 58       	mov    rbx,QWORD PTR [rsp+0x58]
+    440b:	48 8b 4c 24 60       	mov    rcx,QWORD PTR [rsp+0x60]
+    4410:	6a 01                	push   0x1
+    4412:	58                   	pop    rax
+    4413:	eb 18                	jmp    442d <main::main+0x1db>
+    4415:	48 8d 7c 24 58       	lea    rdi,[rsp+0x58]
+        if let Ok(sub_res) = part1(&vec, want) {
+    441a:	4c 8b 67 08          	mov    r12,QWORD PTR [rdi+0x8]
+    441e:	49 8b 1c 2f          	mov    rbx,QWORD PTR [r15+rbp*1]
+    }
+    4422:	e8 a3 fc ff ff       	call   40ca <core::ptr::drop_in_place>
+    4427:	49 0f af dc          	imul   rbx,r12
+    442b:	31 c0                	xor    eax,eax
+    442d:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+    4431:	48 89 5c 24 08       	mov    QWORD PTR [rsp+0x8],rbx
+    4436:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    println!("solution to 2nd part: {}", part2(&vec, 2020)?);
+    443b:	48 85 c0             	test   rax,rax
+    443e:	74 13                	je     4453 <main::main+0x201>
+    4440:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    4445:	49 89 06             	mov    QWORD PTR [r14],rax
+    4448:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    444d:	49 89 46 08          	mov    QWORD PTR [r14+0x8],rax
+    4451:	eb 63                	jmp    44b6 <main::main+0x264>
+    4453:	48 89 9c 24 80 00 00 	mov    QWORD PTR [rsp+0x80],rbx
+    445a:	00 
+    445b:	48 8d 05 26 47 00 00 	lea    rax,[rip+0x4726]        # 8b88 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0xd0>
+    4462:	48 8d bc 24 90 00 00 	lea    rdi,[rsp+0x90]
+    4469:	00 
+    446a:	48 89 07             	mov    QWORD PTR [rdi],rax
+    446d:	48 c7 47 08 02 00 00 	mov    QWORD PTR [rdi+0x8],0x2
+    4474:	00 
+    4475:	48 83 67 10 00       	and    QWORD PTR [rdi+0x10],0x0
+    447a:	48 8d 84 24 80 00 00 	lea    rax,[rsp+0x80]
+    4481:	00 
+    4482:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
+    4487:	48 8b 05 7a 4a 00 00 	mov    rax,QWORD PTR [rip+0x4a7a]        # 8f08 <core::fmt::num::imp::<impl core::fmt::Display for u64>::fmt>
+    448e:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
+    4493:	48 8d 44 24 20       	lea    rax,[rsp+0x20]
+    4498:	48 89 47 20          	mov    QWORD PTR [rdi+0x20],rax
+    449c:	48 c7 47 28 01 00 00 	mov    QWORD PTR [rdi+0x28],0x1
+    44a3:	00 
+    44a4:	ff 15 ee 49 00 00    	call   QWORD PTR [rip+0x49ee]        # 8e98 <std::io::stdio::_print>
+    44aa:	48 89 e7             	mov    rdi,rsp
+    44ad:	e8 18 fc ff ff       	call   40ca <core::ptr::drop_in_place>
+
+    Ok(())
+    44b2:	41 c6 06 03          	mov    BYTE PTR [r14],0x3
+    44b6:	48 8d 7c 24 40       	lea    rdi,[rsp+0x40]
+    44bb:	e8 3f f1 ff ff       	call   35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+}
+    44c0:	4c 89 f0             	mov    rax,r14
+    44c3:	48 81 c4 c8 00 00 00 	add    rsp,0xc8
+    44ca:	5b                   	pop    rbx
+    44cb:	41 5c                	pop    r12
+    44cd:	41 5d                	pop    r13
+    44cf:	41 5e                	pop    r14
+    44d1:	41 5f                	pop    r15
+    44d3:	5d                   	pop    rbp
+    44d4:	c3                   	ret    
+    44d5:	eb 09                	jmp    44e0 <main::main+0x28e>
+    44d7:	eb 07                	jmp    44e0 <main::main+0x28e>
+    44d9:	eb 05                	jmp    44e0 <main::main+0x28e>
+    44db:	48 89 c3             	mov    rbx,rax
+    44de:	eb 0d                	jmp    44ed <main::main+0x29b>
+    44e0:	48 89 c3             	mov    rbx,rax
+    44e3:	48 8d 7c 24 40       	lea    rdi,[rsp+0x40]
+    44e8:	e8 40 fc ff ff       	call   412d <core::ptr::drop_in_place>
+    44ed:	48 89 df             	mov    rdi,rbx
+    44f0:	e8 3b eb ff ff       	call   3030 <_Unwind_Resume@plt>
+    44f5:	0f 0b                	ud2    
+
+00000000000044f7 <main>:
+    44f7:	48 89 f2             	mov    rdx,rsi
+    44fa:	8a 05 ea 1d 00 00    	mov    al,BYTE PTR [rip+0x1dea]        # 62ea <__rustc_debug_gdb_scripts_section__>
+    4500:	48 63 f7             	movsxd rsi,edi
+    4503:	48 8d 3d 48 fd ff ff 	lea    rdi,[rip+0xfffffffffffffd48]        # 4252 <main::main>
+    450a:	e9 83 f8 ff ff       	jmp    3d92 <std::rt::lang_start>
+
+000000000000450f <std::io::append_to_string>:
+    450f:	55                   	push   rbp
+    4510:	41 57                	push   r15
+    4512:	41 56                	push   r14
+    4514:	41 55                	push   r13
+    4516:	41 54                	push   r12
+    4518:	53                   	push   rbx
+    4519:	48 83 ec 78          	sub    rsp,0x78
+    451d:	49 89 ff             	mov    r15,rdi
+    4520:	48 8b 46 10          	mov    rax,QWORD PTR [rsi+0x10]
+    4524:	48 89 74 24 30       	mov    QWORD PTR [rsp+0x30],rsi
+    4529:	48 89 74 24 08       	mov    QWORD PTR [rsp+0x8],rsi
+    452e:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+    4533:	4c 8b 32             	mov    r14,QWORD PTR [rdx]
+    4536:	48 8d 5c 24 20       	lea    rbx,[rsp+0x20]
+    453b:	31 c0                	xor    eax,eax
+    453d:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
+    4542:	4c 8d 6c 24 18       	lea    r13,[rsp+0x18]
+    4547:	48 8b 2d 6a 49 00 00 	mov    rbp,QWORD PTR [rip+0x496a]        # 8eb8 <std::io::error::Error::kind>
+    454e:	4c 89 ef             	mov    rdi,r13
+    4551:	4c 89 f6             	mov    rsi,r14
+    4554:	e8 7b 06 00 00       	call   4bd4 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf>
+    4559:	83 7c 24 18 01       	cmp    DWORD PTR [rsp+0x18],0x1
+    455e:	75 17                	jne    4577 <std::io::append_to_string+0x68>
+    4560:	48 89 df             	mov    rdi,rbx
+    4563:	ff d5                	call   rbp
+    4565:	3c 0f                	cmp    al,0xf
+    4567:	0f 85 d2 00 00 00    	jne    463f <std::io::append_to_string+0x130>
+    456d:	4c 89 ef             	mov    rdi,r13
+    4570:	e8 e0 01 00 00       	call   4755 <core::ptr::drop_in_place>
+    4575:	eb d7                	jmp    454e <std::io::append_to_string+0x3f>
+    4577:	4c 89 7c 24 58       	mov    QWORD PTR [rsp+0x58],r15
+    457c:	48 8b 5c 24 20       	mov    rbx,QWORD PTR [rsp+0x20]
+    4581:	4c 8b 7c 24 28       	mov    r15,QWORD PTR [rsp+0x28]
+    4586:	4c 89 ef             	mov    rdi,r13
+    4589:	e8 c7 01 00 00       	call   4755 <core::ptr::drop_in_place>
+    458e:	6a 0a                	push   0xa
+    4590:	5f                   	pop    rdi
+    4591:	48 89 de             	mov    rsi,rbx
+    4594:	4c 89 fa             	mov    rdx,r15
+    4597:	ff 15 d3 49 00 00    	call   QWORD PTR [rip+0x49d3]        # 8f70 <std::sys::unix::memchr::memchr>
+    459d:	48 85 c0             	test   rax,rax
+    45a0:	74 39                	je     45db <std::io::append_to_string+0xcc>
+    45a2:	49 89 d4             	mov    r12,rdx
+    45a5:	48 83 fa ff          	cmp    rdx,0xffffffffffffffff
+    45a9:	0f 84 57 01 00 00    	je     4706 <std::io::append_to_string+0x1f7>
+    45af:	49 ff c4             	inc    r12
+    45b2:	31 ff                	xor    edi,edi
+    45b4:	4c 89 e6             	mov    rsi,r12
+    45b7:	48 89 da             	mov    rdx,rbx
+    45ba:	4c 89 f9             	mov    rcx,r15
+    45bd:	4c 8d 05 e4 45 00 00 	lea    r8,[rip+0x45e4]        # 8ba8 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0xf0>
+    45c4:	e8 f7 03 00 00       	call   49c0 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index>
+    45c9:	41 b7 01             	mov    r15b,0x1
+    45cc:	48 8b 7c 24 30       	mov    rdi,QWORD PTR [rsp+0x30]
+    45d1:	48 89 c6             	mov    rsi,rax
+    45d4:	e8 06 f9 ff ff       	call   3edf <alloc::vec::Vec<T>::extend_from_slice>
+    45d9:	eb 16                	jmp    45f1 <std::io::append_to_string+0xe2>
+    45db:	48 8b 7c 24 30       	mov    rdi,QWORD PTR [rsp+0x30]
+    45e0:	48 89 de             	mov    rsi,rbx
+    45e3:	4d 89 fc             	mov    r12,r15
+    45e6:	4c 89 fa             	mov    rdx,r15
+    45e9:	e8 f1 f8 ff ff       	call   3edf <alloc::vec::Vec<T>::extend_from_slice>
+    45ee:	45 31 ff             	xor    r15d,r15d
+    45f1:	49 8b 46 10          	mov    rax,QWORD PTR [r14+0x10]
+    45f5:	4c 01 e0             	add    rax,r12
+    45f8:	49 8b 4e 18          	mov    rcx,QWORD PTR [r14+0x18]
+    45fc:	48 39 c8             	cmp    rax,rcx
+    45ff:	48 0f 47 c1          	cmova  rax,rcx
+    4603:	49 89 46 10          	mov    QWORD PTR [r14+0x10],rax
+    4607:	4c 01 64 24 38       	add    QWORD PTR [rsp+0x38],r12
+    460c:	45 84 ff             	test   r15b,r15b
+    460f:	4c 8b 7c 24 58       	mov    r15,QWORD PTR [rsp+0x58]
+    4614:	48 8b 2d 9d 48 00 00 	mov    rbp,QWORD PTR [rip+0x489d]        # 8eb8 <std::io::error::Error::kind>
+    461b:	48 8d 5c 24 20       	lea    rbx,[rsp+0x20]
+    4620:	75 09                	jne    462b <std::io::append_to_string+0x11c>
+    4622:	4d 85 e4             	test   r12,r12
+    4625:	0f 85 23 ff ff ff    	jne    454e <std::io::append_to_string+0x3f>
+    462b:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
+    4630:	48 89 44 24 48       	mov    QWORD PTR [rsp+0x48],rax
+    4635:	48 83 64 24 40 00    	and    QWORD PTR [rsp+0x40],0x0
+    463b:	31 db                	xor    ebx,ebx
+    463d:	eb 14                	jmp    4653 <std::io::append_to_string+0x144>
+    463f:	0f 10 03             	movups xmm0,XMMWORD PTR [rbx]
+    4642:	0f 11 44 24 48       	movups XMMWORD PTR [rsp+0x48],xmm0
+    4647:	48 c7 44 24 40 01 00 	mov    QWORD PTR [rsp+0x40],0x1
+    464e:	00 00 
+    4650:	6a 01                	push   0x1
+    4652:	5b                   	pop    rbx
+    4653:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    4658:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+    465d:	48 8b 10             	mov    rdx,QWORD PTR [rax]
+    4660:	48 8b 48 10          	mov    rcx,QWORD PTR [rax+0x10]
+    4664:	4c 8d 05 55 45 00 00 	lea    r8,[rip+0x4555]        # 8bc0 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0x108>
+    466b:	48 89 ce             	mov    rsi,rcx
+    466e:	e8 4d 03 00 00       	call   49c0 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index>
+    4673:	48 8d 7c 24 18       	lea    rdi,[rsp+0x18]
+    4678:	48 89 c6             	mov    rsi,rax
+    467b:	ff 15 f7 48 00 00    	call   QWORD PTR [rip+0x48f7]        # 8f78 <core::str::from_utf8>
+    4681:	48 83 7c 24 18 00    	cmp    QWORD PTR [rsp+0x18],0x0
+    4687:	74 16                	je     469f <std::io::append_to_string+0x190>
+    4689:	0f 10 44 24 48       	movups xmm0,XMMWORD PTR [rsp+0x48]
+    468e:	0f 29 44 24 60       	movaps XMMWORD PTR [rsp+0x60],xmm0
+    4693:	48 85 db             	test   rbx,rbx
+    4696:	74 29                	je     46c1 <std::io::append_to_string+0x1b2>
+    4698:	0f 28 44 24 60       	movaps xmm0,XMMWORD PTR [rsp+0x60]
+    469d:	eb 3e                	jmp    46dd <std::io::append_to_string+0x1ce>
+    469f:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    46a4:	48 8b 40 10          	mov    rax,QWORD PTR [rax+0x10]
+    46a8:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+    46ad:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+    46b2:	49 89 47 10          	mov    QWORD PTR [r15+0x10],rax
+    46b6:	0f 10 44 24 40       	movups xmm0,XMMWORD PTR [rsp+0x40]
+    46bb:	41 0f 11 07          	movups XMMWORD PTR [r15],xmm0
+    46bf:	eb 28                	jmp    46e9 <std::io::append_to_string+0x1da>
+    46c1:	48 8d 15 ef 1a 00 00 	lea    rdx,[rip+0x1aef]        # 61b7 <anon.4edb19371b067e507ce45a8c53a011f9.4.llvm.8423637217147767627+0x141>
+    46c8:	48 8d 7c 24 18       	lea    rdi,[rsp+0x18]
+    46cd:	6a 0c                	push   0xc
+    46cf:	5e                   	pop    rsi
+    46d0:	6a 22                	push   0x22
+    46d2:	59                   	pop    rcx
+    46d3:	e8 62 f6 ff ff       	call   3d3a <std::io::error::Error::new>
+    46d8:	0f 10 44 24 18       	movups xmm0,XMMWORD PTR [rsp+0x18]
+    46dd:	41 0f 11 47 08       	movups XMMWORD PTR [r15+0x8],xmm0
+    46e2:	49 c7 07 01 00 00 00 	mov    QWORD PTR [r15],0x1
+    46e9:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    46ee:	ff 15 74 48 00 00    	call   QWORD PTR [rip+0x4874]        # 8f68 <<std::io::Guard as core::ops::drop::Drop>::drop>
+    46f4:	4c 89 f8             	mov    rax,r15
+    46f7:	48 83 c4 78          	add    rsp,0x78
+    46fb:	5b                   	pop    rbx
+    46fc:	41 5c                	pop    r12
+    46fe:	41 5d                	pop    r13
+    4700:	41 5e                	pop    r14
+    4702:	41 5f                	pop    r15
+    4704:	5d                   	pop    rbp
+    4705:	c3                   	ret    
+    4706:	48 8d 3d 9b 44 00 00 	lea    rdi,[rip+0x449b]        # 8ba8 <anon.d7cf557ec17f266e412ece827823319f.1.llvm.8026502120264270733+0xf0>
+    470d:	ff 15 85 48 00 00    	call   QWORD PTR [rip+0x4885]        # 8f98 <core::slice::slice_index_overflow_fail>
+    4713:	0f 0b                	ud2    
+    4715:	eb 27                	jmp    473e <std::io::append_to_string+0x22f>
+    4717:	48 89 c3             	mov    rbx,rax
+    471a:	eb 2f                	jmp    474b <std::io::append_to_string+0x23c>
+    471c:	48 89 c3             	mov    rbx,rax
+    471f:	48 8d 7c 24 40       	lea    rdi,[rsp+0x40]
+    4724:	e8 9e 00 00 00       	call   47c7 <core::ptr::drop_in_place>
+    4729:	eb 16                	jmp    4741 <std::io::append_to_string+0x232>
+    472b:	eb 11                	jmp    473e <std::io::append_to_string+0x22f>
+    472d:	48 89 c3             	mov    rbx,rax
+    4730:	48 8d 7c 24 18       	lea    rdi,[rsp+0x18]
+    4735:	e8 1b 00 00 00       	call   4755 <core::ptr::drop_in_place>
+    473a:	eb 05                	jmp    4741 <std::io::append_to_string+0x232>
+    473c:	eb 00                	jmp    473e <std::io::append_to_string+0x22f>
+    473e:	48 89 c3             	mov    rbx,rax
+    4741:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    4746:	e8 76 00 00 00       	call   47c1 <core::ptr::drop_in_place>
+    474b:	48 89 df             	mov    rdi,rbx
+    474e:	e8 dd e8 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4753:	0f 0b                	ud2    
+
+0000000000004755 <core::ptr::drop_in_place>:
+    4755:	48 83 3f 00          	cmp    QWORD PTR [rdi],0x0
+    4759:	74 09                	je     4764 <core::ptr::drop_in_place+0xf>
+    475b:	48 83 c7 08          	add    rdi,0x8
+    475f:	e9 01 00 00 00       	jmp    4765 <core::ptr::drop_in_place>
+    4764:	c3                   	ret    
+
+0000000000004765 <core::ptr::drop_in_place>:
+    4765:	41 57                	push   r15
+    4767:	41 56                	push   r14
+    4769:	53                   	push   rbx
+    476a:	80 3f 02             	cmp    BYTE PTR [rdi],0x2
+    476d:	73 06                	jae    4775 <core::ptr::drop_in_place+0x10>
+    476f:	5b                   	pop    rbx
+    4770:	41 5e                	pop    r14
+    4772:	41 5f                	pop    r15
+    4774:	c3                   	ret    
+    4775:	49 89 ff             	mov    r15,rdi
+    4778:	48 8b 5f 08          	mov    rbx,QWORD PTR [rdi+0x8]
+    477c:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    477f:	48 8b 43 08          	mov    rax,QWORD PTR [rbx+0x8]
+    4783:	ff 10                	call   QWORD PTR [rax]
+    4785:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4788:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    478c:	e8 57 00 00 00       	call   47e8 <alloc::alloc::box_free>
+    4791:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4795:	5b                   	pop    rbx
+    4796:	41 5e                	pop    r14
+    4798:	41 5f                	pop    r15
+    479a:	e9 3d 00 00 00       	jmp    47dc <alloc::alloc::box_free>
+    479f:	49 89 c6             	mov    r14,rax
+    47a2:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    47a5:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    47a9:	e8 3a 00 00 00       	call   47e8 <alloc::alloc::box_free>
+    47ae:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    47b2:	e8 25 00 00 00       	call   47dc <alloc::alloc::box_free>
+    47b7:	4c 89 f7             	mov    rdi,r14
+    47ba:	e8 71 e8 ff ff       	call   3030 <_Unwind_Resume@plt>
+    47bf:	0f 0b                	ud2    
+
+00000000000047c1 <core::ptr::drop_in_place>:
+    47c1:	ff 25 a1 47 00 00    	jmp    QWORD PTR [rip+0x47a1]        # 8f68 <<std::io::Guard as core::ops::drop::Drop>::drop>
+
+00000000000047c7 <core::ptr::drop_in_place>:
+    47c7:	48 83 3f 00          	cmp    QWORD PTR [rdi],0x0
+    47cb:	74 09                	je     47d6 <core::ptr::drop_in_place+0xf>
+    47cd:	48 83 c7 08          	add    rdi,0x8
+    47d1:	e9 8f ff ff ff       	jmp    4765 <core::ptr::drop_in_place>
+    47d6:	c3                   	ret    
+
+00000000000047d7 <_ZN4core3ptr13drop_in_place17hd3f19cca64b34845E.llvm.14365192305496449471>:
+    47d7:	e9 3c ee ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+00000000000047dc <alloc::alloc::box_free>:
+    47dc:	6a 18                	push   0x18
+    47de:	5e                   	pop    rsi
+    47df:	6a 08                	push   0x8
+    47e1:	5a                   	pop    rdx
+    47e2:	ff 25 08 47 00 00    	jmp    QWORD PTR [rip+0x4708]        # 8ef0 <__rust_dealloc>
+
+00000000000047e8 <alloc::alloc::box_free>:
+    47e8:	48 8b 46 08          	mov    rax,QWORD PTR [rsi+0x8]
+    47ec:	48 8b 56 10          	mov    rdx,QWORD PTR [rsi+0x10]
+    47f0:	48 89 c6             	mov    rsi,rax
+    47f3:	e9 e2 00 00 00       	jmp    48da <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>
+
+00000000000047f8 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471>:
+    47f8:	48 8b 47 10          	mov    rax,QWORD PTR [rdi+0x10]
+    47fc:	48 85 c0             	test   rax,rax
+    47ff:	74 1c                	je     481d <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x25>
+    4801:	48 8b 37             	mov    rsi,QWORD PTR [rdi]
+    4804:	48 8d 0c 06          	lea    rcx,[rsi+rax*1]
+    4808:	44 0f b6 59 ff       	movzx  r11d,BYTE PTR [rcx-0x1]
+    480d:	6a 01                	push   0x1
+    480f:	41 59                	pop    r9
+    4811:	45 84 db             	test   r11b,r11b
+    4814:	78 08                	js     481e <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x26>
+    4816:	4c 29 c8             	sub    rax,r9
+    4819:	48 89 47 10          	mov    QWORD PTR [rdi+0x10],rax
+    481d:	c3                   	ret    
+    481e:	48 8d 51 ff          	lea    rdx,[rcx-0x1]
+    4822:	48 39 d6             	cmp    rsi,rdx
+    4825:	74 3e                	je     4865 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x6d>
+    4827:	44 0f b6 51 fe       	movzx  r10d,BYTE PTR [rcx-0x2]
+    482c:	44 89 d2             	mov    edx,r10d
+    482f:	80 e2 c0             	and    dl,0xc0
+    4832:	80 fa 80             	cmp    dl,0x80
+    4835:	75 33                	jne    486a <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x72>
+    4837:	48 8d 51 fe          	lea    rdx,[rcx-0x2]
+    483b:	48 39 d6             	cmp    rsi,rdx
+    483e:	74 30                	je     4870 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x78>
+    4840:	44 0f b6 41 fd       	movzx  r8d,BYTE PTR [rcx-0x3]
+    4845:	44 89 c2             	mov    edx,r8d
+    4848:	80 e2 c0             	and    dl,0xc0
+    484b:	80 fa 80             	cmp    dl,0x80
+    484e:	75 25                	jne    4875 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x7d>
+    4850:	48 8d 51 fd          	lea    rdx,[rcx-0x3]
+    4854:	48 39 d6             	cmp    rsi,rdx
+    4857:	74 22                	je     487b <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x83>
+    4859:	0f b6 49 fc          	movzx  ecx,BYTE PTR [rcx-0x4]
+    485d:	83 e1 07             	and    ecx,0x7
+    4860:	c1 e1 06             	shl    ecx,0x6
+    4863:	eb 18                	jmp    487d <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x85>
+    4865:	45 31 d2             	xor    r10d,r10d
+    4868:	eb 25                	jmp    488f <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x97>
+    486a:	41 83 e2 1f          	and    r10d,0x1f
+    486e:	eb 1f                	jmp    488f <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x97>
+    4870:	45 31 c0             	xor    r8d,r8d
+    4873:	eb 0f                	jmp    4884 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x8c>
+    4875:	41 83 e0 0f          	and    r8d,0xf
+    4879:	eb 09                	jmp    4884 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x8c>
+    487b:	31 c9                	xor    ecx,ecx
+    487d:	41 83 e0 3f          	and    r8d,0x3f
+    4881:	41 09 c8             	or     r8d,ecx
+    4884:	41 c1 e0 06          	shl    r8d,0x6
+    4888:	41 83 e2 3f          	and    r10d,0x3f
+    488c:	45 09 c2             	or     r10d,r8d
+    488f:	41 c1 e2 06          	shl    r10d,0x6
+    4893:	41 83 e3 3f          	and    r11d,0x3f
+    4897:	45 09 d3             	or     r11d,r10d
+    489a:	41 81 fb 00 00 11 00 	cmp    r11d,0x110000
+    48a1:	0f 84 76 ff ff ff    	je     481d <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x25>
+    48a7:	41 81 fb 80 00 00 00 	cmp    r11d,0x80
+    48ae:	0f 82 62 ff ff ff    	jb     4816 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x1e>
+    48b4:	41 81 fb 00 08 00 00 	cmp    r11d,0x800
+    48bb:	73 09                	jae    48c6 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0xce>
+    48bd:	6a 02                	push   0x2
+    48bf:	41 59                	pop    r9
+    48c1:	e9 50 ff ff ff       	jmp    4816 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x1e>
+    48c6:	41 81 fb 00 00 01 00 	cmp    r11d,0x10000
+    48cd:	6a 04                	push   0x4
+    48cf:	41 59                	pop    r9
+    48d1:	49 83 d9 00          	sbb    r9,0x0
+    48d5:	e9 3c ff ff ff       	jmp    4816 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471+0x1e>
+
+00000000000048da <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>:
+    48da:	48 85 f6             	test   rsi,rsi
+    48dd:	74 06                	je     48e5 <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc+0xb>
+    48df:	ff 25 0b 46 00 00    	jmp    QWORD PTR [rip+0x460b]        # 8ef0 <__rust_dealloc>
+    48e5:	c3                   	ret    
+
+00000000000048e6 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next>:
+    48e6:	41 56                	push   r14
+    48e8:	53                   	push   rbx
+    48e9:	48 83 ec 38          	sub    rsp,0x38
+    48ed:	48 89 fb             	mov    rbx,rdi
+    48f0:	48 8d 54 24 08       	lea    rdx,[rsp+0x8]
+    48f5:	48 c7 02 01 00 00 00 	mov    QWORD PTR [rdx],0x1
+    48fc:	0f 57 c0             	xorps  xmm0,xmm0
+    48ff:	0f 11 42 08          	movups XMMWORD PTR [rdx+0x8],xmm0
+    4903:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    4908:	e8 e2 01 00 00       	call   4aef <std::io::BufRead::read_line>
+    490d:	83 7c 24 20 01       	cmp    DWORD PTR [rsp+0x20],0x1
+    4912:	75 12                	jne    4926 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0x40>
+    4914:	48 c7 03 01 00 00 00 	mov    QWORD PTR [rbx],0x1
+    491b:	0f 10 44 24 28       	movups xmm0,XMMWORD PTR [rsp+0x28]
+    4920:	0f 11 43 08          	movups XMMWORD PTR [rbx+0x8],xmm0
+    4924:	eb 67                	jmp    498d <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0xa7>
+    4926:	48 83 7c 24 28 00    	cmp    QWORD PTR [rsp+0x28],0x0
+    492c:	74 58                	je     4986 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0xa0>
+    492e:	48 8b 7c 24 08       	mov    rdi,QWORD PTR [rsp+0x8]
+    4933:	48 8b 74 24 18       	mov    rsi,QWORD PTR [rsp+0x18]
+    4938:	6a 0a                	push   0xa
+    493a:	5a                   	pop    rdx
+    493b:	e8 4a f3 ff ff       	call   3c8a <core::str::<impl str>::ends_with>
+    4940:	84 c0                	test   al,al
+    4942:	74 2a                	je     496e <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0x88>
+    4944:	4c 8d 74 24 08       	lea    r14,[rsp+0x8]
+    4949:	4c 89 f7             	mov    rdi,r14
+    494c:	e8 a7 fe ff ff       	call   47f8 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471>
+    4951:	49 8b 3e             	mov    rdi,QWORD PTR [r14]
+    4954:	49 8b 76 10          	mov    rsi,QWORD PTR [r14+0x10]
+    4958:	6a 0d                	push   0xd
+    495a:	5a                   	pop    rdx
+    495b:	e8 2a f3 ff ff       	call   3c8a <core::str::<impl str>::ends_with>
+    4960:	84 c0                	test   al,al
+    4962:	74 0a                	je     496e <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0x88>
+    4964:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    4969:	e8 8a fe ff ff       	call   47f8 <_ZN5alloc6string6String3pop17h9f559ff8a02a33c6E.llvm.14365192305496449471>
+    496e:	48 83 23 00          	and    QWORD PTR [rbx],0x0
+    4972:	0f 10 44 24 08       	movups xmm0,XMMWORD PTR [rsp+0x8]
+    4977:	0f 11 43 08          	movups XMMWORD PTR [rbx+0x8],xmm0
+    497b:	48 8b 44 24 18       	mov    rax,QWORD PTR [rsp+0x18]
+    4980:	48 89 43 18          	mov    QWORD PTR [rbx+0x18],rax
+    4984:	eb 11                	jmp    4997 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0xb1>
+    4986:	48 c7 03 02 00 00 00 	mov    QWORD PTR [rbx],0x2
+    498d:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    4992:	e8 81 ec ff ff       	call   3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+    4997:	48 89 d8             	mov    rax,rbx
+    499a:	48 83 c4 38          	add    rsp,0x38
+    499e:	5b                   	pop    rbx
+    499f:	41 5e                	pop    r14
+    49a1:	c3                   	ret    
+    49a2:	eb 05                	jmp    49a9 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0xc3>
+    49a4:	48 89 c3             	mov    rbx,rax
+    49a7:	eb 0d                	jmp    49b6 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next+0xd0>
+    49a9:	48 89 c3             	mov    rbx,rax
+    49ac:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
+    49b1:	e8 21 fe ff ff       	call   47d7 <_ZN4core3ptr13drop_in_place17hd3f19cca64b34845E.llvm.14365192305496449471>
+    49b6:	48 89 df             	mov    rdi,rbx
+    49b9:	e8 72 e6 ff ff       	call   3030 <_Unwind_Resume@plt>
+    49be:	0f 0b                	ud2    
+
+00000000000049c0 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index>:
+    49c0:	50                   	push   rax
+    49c1:	48 89 d0             	mov    rax,rdx
+    49c4:	48 89 f2             	mov    rdx,rsi
+    49c7:	48 29 fa             	sub    rdx,rdi
+    49ca:	72 0a                	jb     49d6 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index+0x16>
+    49cc:	48 39 f1             	cmp    rcx,rsi
+    49cf:	72 10                	jb     49e1 <<core::ops::range::Range<usize> as core::slice::SliceIndex<[T]>>::index+0x21>
+    49d1:	48 01 f8             	add    rax,rdi
+    49d4:	59                   	pop    rcx
+    49d5:	c3                   	ret    
+    49d6:	4c 89 c2             	mov    rdx,r8
+    49d9:	ff 15 69 45 00 00    	call   QWORD PTR [rip+0x4569]        # 8f48 <core::slice::slice_index_order_fail>
+    49df:	0f 0b                	ud2    
+    49e1:	48 89 f7             	mov    rdi,rsi
+    49e4:	48 89 ce             	mov    rsi,rcx
+    49e7:	4c 89 c2             	mov    rdx,r8
+    49ea:	ff 15 c8 45 00 00    	call   QWORD PTR [rip+0x45c8]        # 8fb8 <core::slice::slice_index_len_fail>
+    49f0:	0f 0b                	ud2    
+
+00000000000049f2 <core::slice::<impl [T]>::copy_from_slice>:
+    49f2:	48 81 ec b8 00 00 00 	sub    rsp,0xb8
+    49f9:	48 89 74 24 08       	mov    QWORD PTR [rsp+0x8],rsi
+    49fe:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    4a03:	48 39 ce             	cmp    rsi,rcx
+    4a06:	75 16                	jne    4a1e <core::slice::<impl [T]>::copy_from_slice+0x2c>
+    4a08:	48 89 d0             	mov    rax,rdx
+    4a0b:	48 89 f2             	mov    rdx,rsi
+    4a0e:	48 89 c6             	mov    rsi,rax
+    4a11:	48 81 c4 b8 00 00 00 	add    rsp,0xb8
+    4a18:	ff 25 0a 45 00 00    	jmp    QWORD PTR [rip+0x450a]        # 8f28 <memcpy@GLIBC_2.14>
+    4a1e:	48 8d 44 24 08       	lea    rax,[rsp+0x8]
+    4a23:	48 8d 4c 24 18       	lea    rcx,[rsp+0x18]
+    4a28:	48 8d 15 d9 41 00 00 	lea    rdx,[rip+0x41d9]        # 8c08 <anon.e046478ca6b8fe1e2d6ae9485532ee6d.5.llvm.13271208103055248524>
+    4a2f:	48 8d b4 24 88 00 00 	lea    rsi,[rsp+0x88]
+    4a36:	00 
+    4a37:	48 89 16             	mov    QWORD PTR [rsi],rdx
+    4a3a:	48 c7 46 08 01 00 00 	mov    QWORD PTR [rsi+0x8],0x1
+    4a41:	00 
+    4a42:	48 83 66 10 00       	and    QWORD PTR [rsi+0x10],0x0
+    4a47:	48 89 01             	mov    QWORD PTR [rcx],rax
+    4a4a:	48 8d 44 24 10       	lea    rax,[rsp+0x10]
+    4a4f:	48 8d 15 fa 17 00 00 	lea    rdx,[rip+0x17fa]        # 6250 <anon.e046478ca6b8fe1e2d6ae9485532ee6d.6.llvm.13271208103055248524>
+    4a56:	48 89 56 20          	mov    QWORD PTR [rsi+0x20],rdx
+    4a5a:	48 8d 54 24 20       	lea    rdx,[rsp+0x20]
+    4a5f:	48 83 66 28 00       	and    QWORD PTR [rsi+0x28],0x0
+    4a64:	48 89 02             	mov    QWORD PTR [rdx],rax
+    4a67:	48 8d 44 24 58       	lea    rax,[rsp+0x58]
+    4a6c:	48 89 08             	mov    QWORD PTR [rax],rcx
+    4a6f:	48 8d 0d e2 04 00 00 	lea    rcx,[rip+0x4e2]        # 4f58 <<&T as core::fmt::Debug>::fmt>
+    4a76:	48 89 48 08          	mov    QWORD PTR [rax+0x8],rcx
+    4a7a:	48 89 50 10          	mov    QWORD PTR [rax+0x10],rdx
+    4a7e:	48 89 48 18          	mov    QWORD PTR [rax+0x18],rcx
+    4a82:	48 89 70 20          	mov    QWORD PTR [rax+0x20],rsi
+    4a86:	48 8d 0d 4b 41 00 00 	lea    rcx,[rip+0x414b]        # 8bd8 <anon.e046478ca6b8fe1e2d6ae9485532ee6d.3.llvm.13271208103055248524>
+    4a8d:	48 8d 7c 24 28       	lea    rdi,[rsp+0x28]
+    4a92:	48 89 0f             	mov    QWORD PTR [rdi],rcx
+    4a95:	6a 03                	push   0x3
+    4a97:	59                   	pop    rcx
+    4a98:	48 89 4f 08          	mov    QWORD PTR [rdi+0x8],rcx
+    4a9c:	48 83 67 10 00       	and    QWORD PTR [rdi+0x10],0x0
+    4aa1:	48 8b 15 88 44 00 00 	mov    rdx,QWORD PTR [rip+0x4488]        # 8f30 <<core::fmt::Arguments as core::fmt::Display>::fmt>
+    4aa8:	48 89 50 28          	mov    QWORD PTR [rax+0x28],rdx
+    4aac:	48 89 47 20          	mov    QWORD PTR [rdi+0x20],rax
+    4ab0:	48 89 4f 28          	mov    QWORD PTR [rdi+0x28],rcx
+    4ab4:	48 8d 35 5d 41 00 00 	lea    rsi,[rip+0x415d]        # 8c18 <anon.e046478ca6b8fe1e2d6ae9485532ee6d.8.llvm.13271208103055248524>
+    4abb:	ff 15 17 44 00 00    	call   QWORD PTR [rip+0x4417]        # 8ed8 <core::panicking::panic_fmt>
+    4ac1:	0f 0b                	ud2    
+
+0000000000004ac3 <core::slice::<impl [T]>::ends_with>:
+    4ac3:	53                   	push   rbx
+    4ac4:	48 29 ce             	sub    rsi,rcx
+    4ac7:	72 20                	jb     4ae9 <core::slice::<impl [T]>::ends_with+0x26>
+    4ac9:	48 89 f8             	mov    rax,rdi
+    4acc:	48 01 f0             	add    rax,rsi
+    4acf:	b3 01                	mov    bl,0x1
+    4ad1:	48 39 d0             	cmp    rax,rdx
+    4ad4:	74 15                	je     4aeb <core::slice::<impl [T]>::ends_with+0x28>
+    4ad6:	48 89 d7             	mov    rdi,rdx
+    4ad9:	48 89 c6             	mov    rsi,rax
+    4adc:	48 89 ca             	mov    rdx,rcx
+    4adf:	ff 15 6b 44 00 00    	call   QWORD PTR [rip+0x446b]        # 8f50 <bcmp@GLIBC_2.2.5>
+    4ae5:	85 c0                	test   eax,eax
+    4ae7:	74 02                	je     4aeb <core::slice::<impl [T]>::ends_with+0x28>
+    4ae9:	31 db                	xor    ebx,ebx
+    4aeb:	89 d8                	mov    eax,ebx
+    4aed:	5b                   	pop    rbx
+    4aee:	c3                   	ret    
+
+0000000000004aef <std::io::BufRead::read_line>:
+    4aef:	53                   	push   rbx
+    4af0:	48 83 ec 10          	sub    rsp,0x10
+    4af4:	48 89 fb             	mov    rbx,rdi
+    4af7:	48 8d 44 24 08       	lea    rax,[rsp+0x8]
+    4afc:	48 89 30             	mov    QWORD PTR [rax],rsi
+    4aff:	48 89 d6             	mov    rsi,rdx
+    4b02:	48 89 c2             	mov    rdx,rax
+    4b05:	e8 05 fa ff ff       	call   450f <std::io::append_to_string>
+    4b0a:	48 89 d8             	mov    rax,rbx
+    4b0d:	48 83 c4 10          	add    rsp,0x10
+    4b11:	5b                   	pop    rbx
+    4b12:	c3                   	ret    
+
+0000000000004b13 <std::io::buffered::BufReader<R>::new>:
+    4b13:	41 56                	push   r14
+    4b15:	53                   	push   rbx
+    4b16:	48 83 ec 38          	sub    rsp,0x38
+    4b1a:	48 89 fb             	mov    rbx,rdi
+    4b1d:	89 34 24             	mov    DWORD PTR [rsp],esi
+    4b20:	41 be 00 20 00 00    	mov    r14d,0x2000
+    4b26:	bf 00 20 00 00       	mov    edi,0x2000
+    4b2b:	31 f6                	xor    esi,esi
+    4b2d:	e8 77 e7 ff ff       	call   32a9 <alloc::raw_vec::RawVec<T,A>::allocate_in>
+    4b32:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+    4b37:	48 89 54 24 10       	mov    QWORD PTR [rsp+0x10],rdx
+    4b3c:	4c 89 74 24 18       	mov    QWORD PTR [rsp+0x18],r14
+    4b41:	8b 04 24             	mov    eax,DWORD PTR [rsp]
+    4b44:	89 44 24 04          	mov    DWORD PTR [rsp+0x4],eax
+    4b48:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    4b4d:	4c 89 77 10          	mov    QWORD PTR [rdi+0x10],r14
+    4b51:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
+    4b56:	48 89 07             	mov    QWORD PTR [rdi],rax
+    4b59:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    4b5e:	48 89 47 08          	mov    QWORD PTR [rdi+0x8],rax
+    4b62:	e8 38 f3 ff ff       	call   3e9f <alloc::vec::Vec<T>::into_boxed_slice>
+    4b67:	8b 4c 24 04          	mov    ecx,DWORD PTR [rsp+0x4]
+    4b6b:	89 4b 20             	mov    DWORD PTR [rbx+0x20],ecx
+    4b6e:	48 89 03             	mov    QWORD PTR [rbx],rax
+    4b71:	48 89 53 08          	mov    QWORD PTR [rbx+0x8],rdx
+    4b75:	0f 57 c0             	xorps  xmm0,xmm0
+    4b78:	0f 11 43 10          	movups XMMWORD PTR [rbx+0x10],xmm0
+    4b7c:	48 89 d8             	mov    rax,rbx
+    4b7f:	48 83 c4 38          	add    rsp,0x38
+    4b83:	5b                   	pop    rbx
+    4b84:	41 5e                	pop    r14
+    4b86:	c3                   	ret    
+    4b87:	48 89 c3             	mov    rbx,rax
+    4b8a:	48 8d 7c 24 04       	lea    rdi,[rsp+0x4]
+    4b8f:	eb 06                	jmp    4b97 <std::io::buffered::BufReader<R>::new+0x84>
+    4b91:	48 89 c3             	mov    rbx,rax
+    4b94:	48 89 e7             	mov    rdi,rsp
+    4b97:	e8 0a 00 00 00       	call   4ba6 <_ZN4core3ptr13drop_in_place17h0b2256b481ef3e38E.llvm.5073585314392109116>
+    4b9c:	48 89 df             	mov    rdi,rbx
+    4b9f:	e8 8c e4 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4ba4:	0f 0b                	ud2    
+
+0000000000004ba6 <_ZN4core3ptr13drop_in_place17h0b2256b481ef3e38E.llvm.5073585314392109116>:
+    4ba6:	ff 25 1c 43 00 00    	jmp    QWORD PTR [rip+0x431c]        # 8ec8 <<std::sys::unix::fd::FileDesc as core::ops::drop::Drop>::drop>
+
+0000000000004bac <alloc::alloc::box_free>:
+    4bac:	6a 18                	push   0x18
+    4bae:	5e                   	pop    rsi
+    4baf:	6a 08                	push   0x8
+    4bb1:	5a                   	pop    rdx
+    4bb2:	ff 25 38 43 00 00    	jmp    QWORD PTR [rip+0x4338]        # 8ef0 <__rust_dealloc>
+
+0000000000004bb8 <alloc::alloc::box_free>:
+    4bb8:	48 8b 46 08          	mov    rax,QWORD PTR [rsi+0x8]
+    4bbc:	48 8b 56 10          	mov    rdx,QWORD PTR [rsi+0x10]
+    4bc0:	48 89 c6             	mov    rsi,rax
+    4bc3:	e9 00 00 00 00       	jmp    4bc8 <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>
+
+0000000000004bc8 <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc>:
+    4bc8:	48 85 f6             	test   rsi,rsi
+    4bcb:	74 06                	je     4bd3 <<alloc::alloc::Global as core::alloc::AllocRef>::dealloc+0xb>
+    4bcd:	ff 25 1d 43 00 00    	jmp    QWORD PTR [rip+0x431d]        # 8ef0 <__rust_dealloc>
+    4bd3:	c3                   	ret    
+
+0000000000004bd4 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf>:
+    4bd4:	41 57                	push   r15
+    4bd6:	41 56                	push   r14
+    4bd8:	53                   	push   rbx
+    4bd9:	48 83 ec 20          	sub    rsp,0x20
+    4bdd:	48 89 f3             	mov    rbx,rsi
+    4be0:	49 89 fe             	mov    r14,rdi
+    4be3:	48 8b 46 10          	mov    rax,QWORD PTR [rsi+0x10]
+    4be7:	48 8b 7e 18          	mov    rdi,QWORD PTR [rsi+0x18]
+    4beb:	48 39 f8             	cmp    rax,rdi
+    4bee:	72 6a                	jb     4c5a <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0x86>
+    4bf0:	48 8d 73 20          	lea    rsi,[rbx+0x20]
+    4bf4:	48 8b 13             	mov    rdx,QWORD PTR [rbx]
+    4bf7:	48 8b 4b 08          	mov    rcx,QWORD PTR [rbx+0x8]
+    4bfb:	4c 8d 7c 24 08       	lea    r15,[rsp+0x8]
+    4c00:	4c 89 ff             	mov    rdi,r15
+    4c03:	ff 15 77 43 00 00    	call   QWORD PTR [rip+0x4377]        # 8f80 <<std::fs::File as std::io::Read>::read>
+    4c09:	49 8b 07             	mov    rax,QWORD PTR [r15]
+    4c0c:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4c10:	4d 8b 7f 10          	mov    r15,QWORD PTR [r15+0x10]
+    4c14:	48 83 f8 01          	cmp    rax,0x1
+    4c18:	75 09                	jne    4c23 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0x4f>
+    4c1a:	49 89 7e 08          	mov    QWORD PTR [r14+0x8],rdi
+    4c1e:	6a 01                	push   0x1
+    4c20:	58                   	pop    rax
+    4c21:	eb 4f                	jmp    4c72 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0x9e>
+    4c23:	48 89 7b 18          	mov    QWORD PTR [rbx+0x18],rdi
+    4c27:	48 85 c0             	test   rax,rax
+    4c2a:	74 27                	je     4c53 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0x7f>
+    4c2c:	40 80 ff 02          	cmp    dil,0x2
+    4c30:	72 21                	jb     4c53 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0x7f>
+    4c32:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    4c35:	49 8b 47 08          	mov    rax,QWORD PTR [r15+0x8]
+    4c39:	ff 10                	call   QWORD PTR [rax]
+    4c3b:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    4c3e:	49 8b 77 08          	mov    rsi,QWORD PTR [r15+0x8]
+    4c42:	e8 71 ff ff ff       	call   4bb8 <alloc::alloc::box_free>
+    4c47:	4c 89 ff             	mov    rdi,r15
+    4c4a:	e8 5d ff ff ff       	call   4bac <alloc::alloc::box_free>
+    4c4f:	48 8b 7b 18          	mov    rdi,QWORD PTR [rbx+0x18]
+    4c53:	48 83 63 10 00       	and    QWORD PTR [rbx+0x10],0x0
+    4c58:	31 c0                	xor    eax,eax
+    4c5a:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    4c5e:	48 39 fe             	cmp    rsi,rdi
+    4c61:	72 23                	jb     4c86 <<std::io::buffered::BufReader<R> as std::io::BufRead>::fill_buf+0xb2>
+    4c63:	48 29 c7             	sub    rdi,rax
+    4c66:	48 03 03             	add    rax,QWORD PTR [rbx]
+    4c69:	49 89 46 08          	mov    QWORD PTR [r14+0x8],rax
+    4c6d:	31 c0                	xor    eax,eax
+    4c6f:	49 89 ff             	mov    r15,rdi
+    4c72:	4d 89 7e 10          	mov    QWORD PTR [r14+0x10],r15
+    4c76:	49 89 06             	mov    QWORD PTR [r14],rax
+    4c79:	4c 89 f0             	mov    rax,r14
+    4c7c:	48 83 c4 20          	add    rsp,0x20
+    4c80:	5b                   	pop    rbx
+    4c81:	41 5e                	pop    r14
+    4c83:	41 5f                	pop    r15
+    4c85:	c3                   	ret    
+    4c86:	48 8d 15 a3 3f 00 00 	lea    rdx,[rip+0x3fa3]        # 8c30 <anon.e046478ca6b8fe1e2d6ae9485532ee6d.8.llvm.13271208103055248524+0x18>
+    4c8d:	ff 15 25 43 00 00    	call   QWORD PTR [rip+0x4325]        # 8fb8 <core::slice::slice_index_len_fail>
+    4c93:	0f 0b                	ud2    
+    4c95:	48 89 c3             	mov    rbx,rax
+    4c98:	49 8b 3f             	mov    rdi,QWORD PTR [r15]
+    4c9b:	49 8b 77 08          	mov    rsi,QWORD PTR [r15+0x8]
+    4c9f:	e8 14 ff ff ff       	call   4bb8 <alloc::alloc::box_free>
+    4ca4:	4c 89 ff             	mov    rdi,r15
+    4ca7:	e8 00 ff ff ff       	call   4bac <alloc::alloc::box_free>
+    4cac:	48 89 df             	mov    rdi,rbx
+    4caf:	e8 7c e3 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4cb4:	0f 0b                	ud2    
+
+0000000000004cb6 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next>:
+    4cb6:	55                   	push   rbp
+    4cb7:	41 57                	push   r15
+    4cb9:	41 56                	push   r14
+    4cbb:	41 54                	push   r12
+    4cbd:	53                   	push   rbx
+    4cbe:	48 81 ec 80 00 00 00 	sub    rsp,0x80
+    4cc5:	48 89 fd             	mov    rbp,rdi
+    4cc8:	4c 8b 77 28          	mov    r14,QWORD PTR [rdi+0x28]
+    4ccc:	4c 8d 7c 24 60       	lea    r15,[rsp+0x60]
+    4cd1:	4c 8d 64 24 10       	lea    r12,[rsp+0x10]
+    4cd6:	4c 89 ff             	mov    rdi,r15
+    4cd9:	48 89 ee             	mov    rsi,rbp
+    4cdc:	e8 05 fc ff ff       	call   48e6 <<std::io::Lines<B> as core::iter::traits::iterator::Iterator>::next>
+    4ce1:	83 7c 24 60 02       	cmp    DWORD PTR [rsp+0x60],0x2
+    4ce6:	74 55                	je     4d3d <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x87>
+    4ce8:	0f 10 44 24 60       	movups xmm0,XMMWORD PTR [rsp+0x60]
+    4ced:	0f 10 4c 24 70       	movups xmm1,XMMWORD PTR [rsp+0x70]
+    4cf2:	0f 29 44 24 10       	movaps XMMWORD PTR [rsp+0x10],xmm0
+    4cf7:	0f 29 4c 24 20       	movaps XMMWORD PTR [rsp+0x20],xmm1
+            Ok(lstr) => lstr.chars().count() > 0,
+    4cfc:	48 83 7c 24 10 00    	cmp    QWORD PTR [rsp+0x10],0x0
+    4d02:	75 2f                	jne    4d33 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x7d>
+    4d04:	48 8b 74 24 18       	mov    rsi,QWORD PTR [rsp+0x18]
+    4d09:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
+    4d0e:	31 c9                	xor    ecx,ecx
+    4d10:	31 c0                	xor    eax,eax
+    4d12:	48 39 ca             	cmp    rdx,rcx
+    4d15:	74 17                	je     4d2e <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x78>
+    4d17:	8a 1c 0e             	mov    bl,BYTE PTR [rsi+rcx*1]
+    4d1a:	80 e3 c0             	and    bl,0xc0
+    4d1d:	31 ff                	xor    edi,edi
+    4d1f:	80 fb 80             	cmp    bl,0x80
+    4d22:	40 0f 94 c7          	sete   dil
+    4d26:	48 01 f8             	add    rax,rdi
+    4d29:	48 ff c1             	inc    rcx
+    4d2c:	eb e4                	jmp    4d12 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x5c>
+    4d2e:	48 39 c2             	cmp    rdx,rax
+    4d31:	75 1f                	jne    4d52 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x9c>
+    4d33:	4c 89 e7             	mov    rdi,r12
+    4d36:	e8 15 01 00 00       	call   4e50 <core::ptr::drop_in_place>
+    4d3b:	eb 99                	jmp    4cd6 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x20>
+    4d3d:	31 c0                	xor    eax,eax
+    4d3f:	48 89 da             	mov    rdx,rbx
+    4d42:	48 81 c4 80 00 00 00 	add    rsp,0x80
+    4d49:	5b                   	pop    rbx
+    4d4a:	41 5c                	pop    r12
+    4d4c:	41 5e                	pop    r14
+    4d4e:	41 5f                	pop    r15
+    4d50:	5d                   	pop    rbp
+    4d51:	c3                   	ret    
+    4d52:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+    4d57:	48 89 74 24 38       	mov    QWORD PTR [rsp+0x38],rsi
+    4d5c:	48 89 44 24 40       	mov    QWORD PTR [rsp+0x40],rax
+    4d61:	48 89 54 24 48       	mov    QWORD PTR [rsp+0x48],rdx
+    4d66:	48 89 e7             	mov    rdi,rsp
+    4d69:	ff 15 61 42 00 00    	call   QWORD PTR [rip+0x4261]        # 8fd0 <core::num::<impl core::str::FromStr for u64>::from_str>
+    4d6f:	80 3c 24 01          	cmp    BYTE PTR [rsp],0x1
+    4d73:	75 21                	jne    4d96 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0xe0>
+                    |e| Error::new(ErrorKind::InvalidData, e))
+    4d75:	0f b6 54 24 01       	movzx  edx,BYTE PTR [rsp+0x1]
+    4d7a:	48 8d 7c 24 50       	lea    rdi,[rsp+0x50]
+    4d7f:	6a 0c                	push   0xc
+    4d81:	5e                   	pop    rsi
+    4d82:	e8 e1 ef ff ff       	call   3d68 <std::io::error::Error::new>
+    4d87:	48 8b 5c 24 50       	mov    rbx,QWORD PTR [rsp+0x50]
+    4d8c:	4c 8b 64 24 58       	mov    r12,QWORD PTR [rsp+0x58]
+    4d91:	40 b5 01             	mov    bpl,0x1
+    4d94:	eb 07                	jmp    4d9d <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0xe7>
+    4d96:	48 8b 5c 24 08       	mov    rbx,QWORD PTR [rsp+0x8]
+    4d9b:	31 ed                	xor    ebp,ebp
+    4d9d:	48 8d 7c 24 38       	lea    rdi,[rsp+0x38]
+    4da2:	e8 71 e8 ff ff       	call   3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+    4da7:	40 84 ed             	test   bpl,bpl
+    4daa:	74 13                	je     4dbf <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x109>
+    4dac:	4c 89 f7             	mov    rdi,r14
+    4daf:	e8 92 00 00 00       	call   4e46 <_ZN4core3ptr13drop_in_place17had8808bf2368f18eE.llvm.16361571597015335836>
+    4db4:	49 89 1e             	mov    QWORD PTR [r14],rbx
+    4db7:	4d 89 66 08          	mov    QWORD PTR [r14+0x8],r12
+    4dbb:	31 c0                	xor    eax,eax
+    4dbd:	eb 80                	jmp    4d3f <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x89>
+    4dbf:	6a 01                	push   0x1
+    4dc1:	58                   	pop    rax
+    4dc2:	e9 78 ff ff ff       	jmp    4d3f <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x89>
+    4dc7:	49 89 c7             	mov    r15,rax
+    4dca:	49 89 1e             	mov    QWORD PTR [r14],rbx
+    4dcd:	4d 89 66 08          	mov    QWORD PTR [r14+0x8],r12
+    4dd1:	eb 0d                	jmp    4de0 <<core::iter::adapters::ResultShunt<I,E> as core::iter::traits::iterator::Iterator>::next+0x12a>
+    4dd3:	49 89 c7             	mov    r15,rax
+    4dd6:	48 8d 7c 24 38       	lea    rdi,[rsp+0x38]
+    4ddb:	e8 83 00 00 00       	call   4e63 <core::ptr::drop_in_place>
+    4de0:	4c 89 ff             	mov    rdi,r15
+    4de3:	e8 48 e2 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4de8:	0f 0b                	ud2    
+
+0000000000004dea <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.16361571597015335836>:
+    4dea:	41 57                	push   r15
+    4dec:	41 56                	push   r14
+    4dee:	53                   	push   rbx
+    4def:	80 3f 02             	cmp    BYTE PTR [rdi],0x2
+    4df2:	73 06                	jae    4dfa <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.16361571597015335836+0x10>
+    4df4:	5b                   	pop    rbx
+    4df5:	41 5e                	pop    r14
+    4df7:	41 5f                	pop    r15
+    4df9:	c3                   	ret    
+    4dfa:	49 89 ff             	mov    r15,rdi
+    4dfd:	48 8b 5f 08          	mov    rbx,QWORD PTR [rdi+0x8]
+    4e01:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4e04:	48 8b 43 08          	mov    rax,QWORD PTR [rbx+0x8]
+    4e08:	ff 10                	call   QWORD PTR [rax]
+    4e0a:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4e0d:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    4e11:	e8 26 01 00 00       	call   4f3c <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.16361571597015335836>
+    4e16:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4e1a:	5b                   	pop    rbx
+    4e1b:	41 5e                	pop    r14
+    4e1d:	41 5f                	pop    r15
+    4e1f:	e9 0c 01 00 00       	jmp    4f30 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.16361571597015335836>
+    4e24:	49 89 c6             	mov    r14,rax
+    4e27:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4e2a:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    4e2e:	e8 09 01 00 00       	call   4f3c <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.16361571597015335836>
+    4e33:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4e37:	e8 f4 00 00 00       	call   4f30 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.16361571597015335836>
+    4e3c:	4c 89 f7             	mov    rdi,r14
+    4e3f:	e8 ec e1 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4e44:	0f 0b                	ud2    
+
+0000000000004e46 <_ZN4core3ptr13drop_in_place17had8808bf2368f18eE.llvm.16361571597015335836>:
+    4e46:	80 3f 03             	cmp    BYTE PTR [rdi],0x3
+    4e49:	0f 85 9b ff ff ff    	jne    4dea <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.16361571597015335836>
+    4e4f:	c3                   	ret    
+
+0000000000004e50 <core::ptr::drop_in_place>:
+    4e50:	48 83 3f 00          	cmp    QWORD PTR [rdi],0x0
+    4e54:	48 8d 7f 08          	lea    rdi,[rdi+0x8]
+    4e58:	0f 85 8c ff ff ff    	jne    4dea <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.16361571597015335836>
+    4e5e:	e9 b5 e7 ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000004e63 <core::ptr::drop_in_place>:
+    4e63:	e9 b0 e7 ff ff       	jmp    3618 <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+
+0000000000004e68 <core::iter::adapters::process_results>:
+    4e68:	53                   	push   rbx
+    4e69:	48 83 ec 70          	sub    rsp,0x70
+    4e6d:	48 89 fb             	mov    rbx,rdi
+    4e70:	48 89 e1             	mov    rcx,rsp
+    4e73:	c6 01 03             	mov    BYTE PTR [rcx],0x3
+    4e76:	48 8b 56 20          	mov    rdx,QWORD PTR [rsi+0x20]
+    4e7a:	48 8d 44 24 20       	lea    rax,[rsp+0x20]
+    4e7f:	48 89 50 20          	mov    QWORD PTR [rax+0x20],rdx
+    4e83:	0f 10 06             	movups xmm0,XMMWORD PTR [rsi]
+    4e86:	0f 10 4e 10          	movups xmm1,XMMWORD PTR [rsi+0x10]
+    4e8a:	0f 29 48 10          	movaps XMMWORD PTR [rax+0x10],xmm1
+    4e8e:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+    4e91:	48 89 48 28          	mov    QWORD PTR [rax+0x28],rcx
+    4e95:	48 8d 7c 24 58       	lea    rdi,[rsp+0x58]
+    4e9a:	48 89 c6             	mov    rsi,rax
+    4e9d:	e8 fa f0 ff ff       	call   3f9c <<alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter>
+    4ea2:	8a 04 24             	mov    al,BYTE PTR [rsp]
+    4ea5:	48 8b 4c 24 01       	mov    rcx,QWORD PTR [rsp+0x1]
+    4eaa:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
+    4eaf:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
+    4eb4:	48 89 4c 24 17       	mov    QWORD PTR [rsp+0x17],rcx
+    4eb9:	48 8b 4c 24 68       	mov    rcx,QWORD PTR [rsp+0x68]
+    4ebe:	48 89 4c 24 30       	mov    QWORD PTR [rsp+0x30],rcx
+    4ec3:	0f 10 44 24 58       	movups xmm0,XMMWORD PTR [rsp+0x58]
+    4ec8:	0f 29 44 24 20       	movaps XMMWORD PTR [rsp+0x20],xmm0
+    4ecd:	3c 03                	cmp    al,0x3
+    4ecf:	75 1b                	jne    4eec <core::iter::adapters::process_results+0x84>
+    4ed1:	48 8d 43 08          	lea    rax,[rbx+0x8]
+    4ed5:	48 8b 4c 24 30       	mov    rcx,QWORD PTR [rsp+0x30]
+    4eda:	48 89 48 10          	mov    QWORD PTR [rax+0x10],rcx
+    4ede:	0f 28 44 24 20       	movaps xmm0,XMMWORD PTR [rsp+0x20]
+    4ee3:	0f 11 00             	movups XMMWORD PTR [rax],xmm0
+    4ee6:	48 83 23 00          	and    QWORD PTR [rbx],0x0
+    4eea:	eb 26                	jmp    4f12 <core::iter::adapters::process_results+0xaa>
+    4eec:	88 43 08             	mov    BYTE PTR [rbx+0x8],al
+    4eef:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+    4ef4:	48 8b 4c 24 17       	mov    rcx,QWORD PTR [rsp+0x17]
+    4ef9:	48 89 43 09          	mov    QWORD PTR [rbx+0x9],rax
+    4efd:	48 89 4b 10          	mov    QWORD PTR [rbx+0x10],rcx
+    4f01:	48 c7 03 01 00 00 00 	mov    QWORD PTR [rbx],0x1
+    4f08:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    4f0d:	e8 ed e6 ff ff       	call   35ff <<alloc::raw_vec::RawVec<T,A> as core::ops::drop::Drop>::drop>
+    4f12:	48 89 d8             	mov    rax,rbx
+    4f15:	48 83 c4 70          	add    rsp,0x70
+    4f19:	5b                   	pop    rbx
+    4f1a:	c3                   	ret    
+    4f1b:	48 89 c3             	mov    rbx,rax
+    4f1e:	48 89 e7             	mov    rdi,rsp
+    4f21:	e8 20 ff ff ff       	call   4e46 <_ZN4core3ptr13drop_in_place17had8808bf2368f18eE.llvm.16361571597015335836>
+    4f26:	48 89 df             	mov    rdi,rbx
+    4f29:	e8 02 e1 ff ff       	call   3030 <_Unwind_Resume@plt>
+    4f2e:	0f 0b                	ud2    
+
+0000000000004f30 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.16361571597015335836>:
+    4f30:	6a 18                	push   0x18
+    4f32:	5e                   	pop    rsi
+    4f33:	6a 08                	push   0x8
+    4f35:	5a                   	pop    rdx
+    4f36:	ff 25 b4 3f 00 00    	jmp    QWORD PTR [rip+0x3fb4]        # 8ef0 <__rust_dealloc>
+
+0000000000004f3c <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.16361571597015335836>:
+    4f3c:	48 8b 46 08          	mov    rax,QWORD PTR [rsi+0x8]
+    4f40:	48 8b 56 10          	mov    rdx,QWORD PTR [rsi+0x10]
+    4f44:	48 89 c6             	mov    rsi,rax
+    4f47:	e9 00 00 00 00       	jmp    4f4c <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.16361571597015335836>
+
+0000000000004f4c <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.16361571597015335836>:
+    4f4c:	48 85 f6             	test   rsi,rsi
+    4f4f:	74 06                	je     4f57 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.16361571597015335836+0xb>
+    4f51:	ff 25 99 3f 00 00    	jmp    QWORD PTR [rip+0x3f99]        # 8ef0 <__rust_dealloc>
+    4f57:	c3                   	ret    
+
+0000000000004f58 <<&T as core::fmt::Debug>::fmt>:
+    4f58:	41 56                	push   r14
+    4f5a:	53                   	push   rbx
+    4f5b:	50                   	push   rax
+    4f5c:	48 89 f3             	mov    rbx,rsi
+    4f5f:	4c 8b 37             	mov    r14,QWORD PTR [rdi]
+    4f62:	48 89 f7             	mov    rdi,rsi
+    4f65:	ff 15 45 3f 00 00    	call   QWORD PTR [rip+0x3f45]        # 8eb0 <core::fmt::Formatter::debug_lower_hex>
+    4f6b:	84 c0                	test   al,al
+    4f6d:	74 13                	je     4f82 <<&T as core::fmt::Debug>::fmt+0x2a>
+    4f6f:	4c 89 f7             	mov    rdi,r14
+    4f72:	48 89 de             	mov    rsi,rbx
+    4f75:	48 83 c4 08          	add    rsp,0x8
+    4f79:	5b                   	pop    rbx
+    4f7a:	41 5e                	pop    r14
+    4f7c:	ff 25 66 3f 00 00    	jmp    QWORD PTR [rip+0x3f66]        # 8ee8 <core::fmt::num::<impl core::fmt::LowerHex for usize>::fmt>
+    4f82:	48 89 df             	mov    rdi,rbx
+    4f85:	ff 15 65 40 00 00    	call   QWORD PTR [rip+0x4065]        # 8ff0 <core::fmt::Formatter::debug_upper_hex>
+    4f8b:	4c 89 f7             	mov    rdi,r14
+    4f8e:	48 89 de             	mov    rsi,rbx
+    4f91:	48 83 c4 08          	add    rsp,0x8
+    4f95:	84 c0                	test   al,al
+    4f97:	74 09                	je     4fa2 <<&T as core::fmt::Debug>::fmt+0x4a>
+    4f99:	5b                   	pop    rbx
+    4f9a:	41 5e                	pop    r14
+    4f9c:	ff 25 06 40 00 00    	jmp    QWORD PTR [rip+0x4006]        # 8fa8 <core::fmt::num::<impl core::fmt::UpperHex for usize>::fmt>
+    4fa2:	5b                   	pop    rbx
+    4fa3:	41 5e                	pop    r14
+    4fa5:	ff 25 ad 3f 00 00    	jmp    QWORD PTR [rip+0x3fad]        # 8f58 <core::fmt::num::imp::<impl core::fmt::Display for usize>::fmt>
+
+0000000000004fab <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.3573526856214804437>:
+    4fab:	41 57                	push   r15
+    4fad:	41 56                	push   r14
+    4faf:	53                   	push   rbx
+    4fb0:	80 3f 02             	cmp    BYTE PTR [rdi],0x2
+    4fb3:	73 06                	jae    4fbb <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.3573526856214804437+0x10>
+    4fb5:	5b                   	pop    rbx
+    4fb6:	41 5e                	pop    r14
+    4fb8:	41 5f                	pop    r15
+    4fba:	c3                   	ret    
+    4fbb:	49 89 ff             	mov    r15,rdi
+    4fbe:	48 8b 5f 08          	mov    rbx,QWORD PTR [rdi+0x8]
+    4fc2:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4fc5:	48 8b 43 08          	mov    rax,QWORD PTR [rbx+0x8]
+    4fc9:	ff 10                	call   QWORD PTR [rax]
+    4fcb:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4fce:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    4fd2:	e8 3c 00 00 00       	call   5013 <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.3573526856214804437>
+    4fd7:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4fdb:	5b                   	pop    rbx
+    4fdc:	41 5e                	pop    r14
+    4fde:	41 5f                	pop    r15
+    4fe0:	e9 22 00 00 00       	jmp    5007 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.3573526856214804437>
+    4fe5:	49 89 c6             	mov    r14,rax
+    4fe8:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
+    4feb:	48 8b 73 08          	mov    rsi,QWORD PTR [rbx+0x8]
+    4fef:	e8 1f 00 00 00       	call   5013 <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.3573526856214804437>
+    4ff4:	49 8b 7f 08          	mov    rdi,QWORD PTR [r15+0x8]
+    4ff8:	e8 0a 00 00 00       	call   5007 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.3573526856214804437>
+    4ffd:	4c 89 f7             	mov    rdi,r14
+    5000:	e8 2b e0 ff ff       	call   3030 <_Unwind_Resume@plt>
+    5005:	0f 0b                	ud2    
+
+0000000000005007 <_ZN5alloc5alloc8box_free17h5330d4c7190f9e2cE.llvm.3573526856214804437>:
+    5007:	6a 18                	push   0x18
+    5009:	5e                   	pop    rsi
+    500a:	6a 08                	push   0x8
+    500c:	5a                   	pop    rdx
+    500d:	ff 25 dd 3e 00 00    	jmp    QWORD PTR [rip+0x3edd]        # 8ef0 <__rust_dealloc>
+
+0000000000005013 <_ZN5alloc5alloc8box_free17hd187a4a47a57254aE.llvm.3573526856214804437>:
+    5013:	48 8b 46 08          	mov    rax,QWORD PTR [rsi+0x8]
+    5017:	48 8b 56 10          	mov    rdx,QWORD PTR [rsi+0x10]
+    501b:	48 89 c6             	mov    rsi,rax
+    501e:	e9 00 00 00 00       	jmp    5023 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.3573526856214804437>
+
+0000000000005023 <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.3573526856214804437>:
+    5023:	48 85 f6             	test   rsi,rsi
+    5026:	74 06                	je     502e <_ZN62_$LT$alloc..alloc..Global$u20$as$u20$core..alloc..AllocRef$GT$7dealloc17h8956661d2d2c5d98E.llvm.3573526856214804437+0xb>
+    5028:	ff 25 c2 3e 00 00    	jmp    QWORD PTR [rip+0x3ec2]        # 8ef0 <__rust_dealloc>
+    502e:	c3                   	ret    
+
+000000000000502f <<core::result::Result<(),E> as std::process::Termination>::report>:
+    502f:	53                   	push   rbx
+    5030:	48 83 ec 50          	sub    rsp,0x50
+    5034:	31 c0                	xor    eax,eax
+    5036:	80 3f 03             	cmp    BYTE PTR [rdi],0x3
+    5039:	74 55                	je     5090 <<core::result::Result<(),E> as std::process::Termination>::report+0x61>
+    503b:	0f 10 07             	movups xmm0,XMMWORD PTR [rdi]
+    503e:	48 89 e0             	mov    rax,rsp
+    5041:	0f 29 00             	movaps XMMWORD PTR [rax],xmm0
+    5044:	48 8d 4c 24 10       	lea    rcx,[rsp+0x10]
+    5049:	48 89 01             	mov    QWORD PTR [rcx],rax
+    504c:	48 8d 05 f5 3b 00 00 	lea    rax,[rip+0x3bf5]        # 8c48 <anon.5a178d48161d4850f6906efab91f5be6.2.llvm.3573526856214804437>
+    5053:	48 8d 7c 24 20       	lea    rdi,[rsp+0x20]
+    5058:	48 89 07             	mov    QWORD PTR [rdi],rax
+    505b:	48 c7 47 08 02 00 00 	mov    QWORD PTR [rdi+0x8],0x2
+    5062:	00 
+    5063:	48 83 67 10 00       	and    QWORD PTR [rdi+0x10],0x0
+    5068:	48 8b 05 61 3e 00 00 	mov    rax,QWORD PTR [rip+0x3e61]        # 8ed0 <<std::io::error::Error as core::fmt::Debug>::fmt>
+    506f:	48 89 41 08          	mov    QWORD PTR [rcx+0x8],rax
+    5073:	48 89 4f 20          	mov    QWORD PTR [rdi+0x20],rcx
+    5077:	48 c7 47 28 01 00 00 	mov    QWORD PTR [rdi+0x28],0x1
+    507e:	00 
+    507f:	ff 15 1b 3f 00 00    	call   QWORD PTR [rip+0x3f1b]        # 8fa0 <std::io::stdio::_eprint>
+    5085:	48 89 e7             	mov    rdi,rsp
+    5088:	e8 1e ff ff ff       	call   4fab <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.3573526856214804437>
+    508d:	6a 01                	push   0x1
+    508f:	58                   	pop    rax
+    5090:	48 83 c4 50          	add    rsp,0x50
+    5094:	5b                   	pop    rbx
+    5095:	c3                   	ret    
+    5096:	48 89 c3             	mov    rbx,rax
+    5099:	eb 0b                	jmp    50a6 <<core::result::Result<(),E> as std::process::Termination>::report+0x77>
+    509b:	48 89 c3             	mov    rbx,rax
+    509e:	48 89 e7             	mov    rdi,rsp
+    50a1:	e8 05 ff ff ff       	call   4fab <_ZN4core3ptr13drop_in_place17h8a5e0ec2c1594c2aE.llvm.3573526856214804437>
+    50a6:	48 89 df             	mov    rdi,rbx
+    50a9:	e8 82 df ff ff       	call   3030 <_Unwind_Resume@plt>
+    50ae:	0f 0b                	ud2    
+
+00000000000050b0 <__libc_csu_init>:
+    50b0:	f3 0f 1e fa          	endbr64 
+    50b4:	41 57                	push   r15
+    50b6:	4c 8d 3d 73 38 00 00 	lea    r15,[rip+0x3873]        # 8930 <__frame_dummy_init_array_entry>
+    50bd:	41 56                	push   r14
+    50bf:	49 89 d6             	mov    r14,rdx
+    50c2:	41 55                	push   r13
+    50c4:	49 89 f5             	mov    r13,rsi
+    50c7:	41 54                	push   r12
+    50c9:	41 89 fc             	mov    r12d,edi
+    50cc:	55                   	push   rbp
+    50cd:	48 8d 2d 64 38 00 00 	lea    rbp,[rip+0x3864]        # 8938 <__do_global_dtors_aux_fini_array_entry>
+    50d4:	53                   	push   rbx
+    50d5:	4c 29 fd             	sub    rbp,r15
+    50d8:	48 83 ec 08          	sub    rsp,0x8
+    50dc:	e8 1f df ff ff       	call   3000 <_init>
+    50e1:	48 c1 fd 03          	sar    rbp,0x3
+    50e5:	74 1f                	je     5106 <__libc_csu_init+0x56>
+    50e7:	31 db                	xor    ebx,ebx
+    50e9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+    50f0:	4c 89 f2             	mov    rdx,r14
+    50f3:	4c 89 ee             	mov    rsi,r13
+    50f6:	44 89 e7             	mov    edi,r12d
+    50f9:	41 ff 14 df          	call   QWORD PTR [r15+rbx*8]
+    50fd:	48 83 c3 01          	add    rbx,0x1
+    5101:	48 39 dd             	cmp    rbp,rbx
+    5104:	75 ea                	jne    50f0 <__libc_csu_init+0x40>
+    5106:	48 83 c4 08          	add    rsp,0x8
+    510a:	5b                   	pop    rbx
+    510b:	5d                   	pop    rbp
+    510c:	41 5c                	pop    r12
+    510e:	41 5d                	pop    r13
+    5110:	41 5e                	pop    r14
+    5112:	41 5f                	pop    r15
+    5114:	c3                   	ret    
+    5115:	66 66 2e 0f 1f 84 00 	data16 nop WORD PTR cs:[rax+rax*1+0x0]
+    511c:	00 00 00 00 
+
+0000000000005120 <__libc_csu_fini>:
+    5120:	f3 0f 1e fa          	endbr64 
+    5124:	c3                   	ret    
+
+Disassembly of section .fini:
+
+0000000000005128 <_fini>:
+    5128:	f3 0f 1e fa          	endbr64 
+    512c:	48 83 ec 08          	sub    rsp,0x8
+    5130:	48 83 c4 08          	add    rsp,0x8
+    5134:	c3                   	ret    
