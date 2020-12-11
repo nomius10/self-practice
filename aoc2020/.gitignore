@@ -5,4 +5,4 @@
 # nor files with extensions
 !*.*
 # nor the input files
-!**/input
+!**/input*
